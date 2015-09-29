@@ -20,7 +20,9 @@ namespace Membership.Business
             if (user == null)
                 throw new NotFoundException("User", userName);
 
-            bool result = RoleManagerFactory.Create().AddUserToRole(userName, roleName);
+            AspRole role = FindRole(roleName);
+
+            bool result = RoleManagerFactory.Create().AddUserToRole(userName, role.Name);
             if (!result)
                 throw new BadOperationException($"Unable to add user '{userName}' to role '{roleName}'.");
         }
@@ -33,6 +35,16 @@ namespace Membership.Business
             bool result = RoleManagerFactory.Create().CreateRole(roleName);
             if (!result)
                 throw new BadOperationException($"Unable to create role '{roleName}'.");
+        }
+
+        public static void DeleteRole(string roleName)
+        {
+            if (string.IsNullOrEmpty(roleName))
+                throw new MissingValueException("RoleName");
+
+            bool result = RoleManagerFactory.Create().DeleteRole(roleName);
+            if (!result)
+                throw new BadOperationException($"Unable to remove role '{roleName}'.");
         }
 
         public static List<AspRole> FindAll()
@@ -58,17 +70,7 @@ namespace Membership.Business
             return RoleManagerFactory.Create().FindUsersInRole(role.Name).ToList();
         }
 
-        public static void DeleteRole(string roleName)
-        {
-            if (string.IsNullOrEmpty(roleName))
-                throw new MissingValueException("RoleName");
-
-            bool result = RoleManagerFactory.Create().DeleteRole(roleName);
-            if (!result)
-                throw new BadOperationException($"Unable to remove role '{roleName}'.");
-        }
-
-        public static void RemoveUserToRole(string userName, string roleName)
+        public static void RemoveUserFromRole(string userName, string roleName)
         {
             if (string.IsNullOrEmpty(userName))
                 throw new MissingValueException("UserName");

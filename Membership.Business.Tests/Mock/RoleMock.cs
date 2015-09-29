@@ -16,8 +16,8 @@ namespace Membership.Business.Tests.Mock
             AspRole role = FindByName(roleName);
             if (role == null) return false;
 
-            AspUser user = role.AspUsers.First(t => t.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
-            if (user != null) return false;
+            AspUser user = UserDataMock.FindByUserName(userName);
+            if (user == null) return false;
 
             user = UserDataMock.FindByUserName(userName);
             if (user == null) return false;
@@ -81,7 +81,7 @@ namespace Membership.Business.Tests.Mock
 
         public IEnumerable<AspUser> FindUsersInRole(string roleName)
         {
-            var role = RoleDataMock.FindByName(roleName);
+            AspRole role = RoleDataMock.FindByName(roleName);
             if (role != null)
                 return role.AspUsers;
 
