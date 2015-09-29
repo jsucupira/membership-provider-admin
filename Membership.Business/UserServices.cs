@@ -16,10 +16,10 @@ namespace Membership.Business
                 throw new MissingValueException("UserName");
 
             if (string.IsNullOrEmpty(email))
-                throw new MissingValueException("email");
+                throw new MissingValueException("Email Address");
 
             if (string.IsNullOrEmpty(password))
-                throw new MissingValueException("password");
+                throw new MissingValueException("Password");
 
             if (!email.IsValidEmail())
                 throw new InvalidValueException("Email Address", email);
@@ -28,12 +28,21 @@ namespace Membership.Business
             {
                 bool result = UserManagerFactory.Create().CreateUser(userName, email, password);
                 if (!result)
-                    throw new BadOperationException($"Unable to create user {userName}");
+                    throw new BadOperationException($"Unable to create user {userName}.");
+            }
+            catch (BadOperationException)
+            {
+                throw;
             }
             catch (Exception ex)
             {
                 throw new BadOperationException($"Unable to create user {userName} -> ${ex.Message}");
             }
+        }
+
+        public static List<AspUser> FindAll()
+        {
+            return UserManagerFactory.Create().FindAll().ToList();
         }
 
         public static AspUser FindUser(string userName)
@@ -58,17 +67,16 @@ namespace Membership.Business
             {
                 bool result = UserManagerFactory.Create().DeleteUser(userName);
                 if (!result)
-                    throw new BadOperationException($"Unable to delete user {userName}");
+                    throw new BadOperationException($"Unable to delete user {userName}.");
+            }
+            catch (BadOperationException)
+            {
+                throw;
             }
             catch (Exception ex)
             {
                 throw new BadOperationException($"Unable to remove user {userName} -> ${ex.Message}");
             }
         }
-
-        public static List<AspUser> FindAll()
-        {
-            return UserManagerFactory.Create().FindAll().ToList();
-        } 
     }
 }
