@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Membership.Model;
 
-namespace Membership.Contracts
+namespace Membership.Model.Roles
 {
     /// <summary>
     /// Interface IRoleManager
@@ -11,10 +10,10 @@ namespace Membership.Contracts
         /// <summary>
         /// Adds the user to role.
         /// </summary>
-        /// <param name="userId">The user identifier.</param>
+        /// <param name="userName">Name of the user.</param>
         /// <param name="roleName">Name of the role.</param>
         /// <returns><c>true</c> if successfully added user to role, <c>false</c> otherwise.</returns>
-        bool AddUserToRole(string userId, string roleName);
+        bool AddUserToRole(string userName, string roleName);
         /// <summary>
         /// Creates the role.
         /// </summary>
@@ -25,7 +24,7 @@ namespace Membership.Contracts
         /// Finds all.
         /// </summary>
         /// <returns>All available roles.</returns>
-        IList<AspRole> FindAll();
+        IEnumerable<AspRole> FindAll();
         /// <summary>
         /// Finds the name of the by.
         /// </summary>
@@ -41,9 +40,16 @@ namespace Membership.Contracts
         /// <summary>
         /// Removes the user from role.
         /// </summary>
-        /// <param name="userId">The user identifier.</param>
+        /// <param name="userName">Name of the user.</param>
         /// <param name="roleName">Name of the role.</param>
         /// <returns><c>true</c> if user was removed from role, <c>false</c> otherwise.</returns>
-        bool RemoveUserFromRole(string userId, string roleName);
+        bool RemoveUserFromRole(string userName, string roleName);
+
+        /// <summary>
+        /// Finds the roles for user.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <returns>List of roles that the user is in.</returns>
+        IEnumerable<AspRole> FindRolesForUser(string userName);
     }
 }

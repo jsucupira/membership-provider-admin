@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,8 +51,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Mock\RoleDataMock.cs" />
+    <Compile Include="Mock\RoleMock.cs" />
+    <Compile Include="Mock\UserDataMock.cs" />
+    <Compile Include="Mock\UserMock.cs" />
     <Compile Include="UserServicesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Membership.Model\Membership.Model.csproj">
+      <Project>{42E8E54B-A944-4371-A7B1-E38E70E7DD74}</Project>
+      <Name>Membership.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
