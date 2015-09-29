@@ -24,20 +24,9 @@ namespace Membership.Business
             if (!email.IsValidEmail())
                 throw new InvalidValueException("Email Address", email);
 
-            try
-            {
-                bool result = UserManagerFactory.Create().CreateUser(userName, email, password);
-                if (!result)
-                    throw new BadOperationException($"Unable to create user {userName}.");
-            }
-            catch (BadOperationException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw new BadOperationException($"Unable to create user {userName} -> ${ex.Message}");
-            }
+            bool result = UserManagerFactory.Create().CreateUser(userName, email, password);
+            if (!result)
+                throw new BadOperationException($"Unable to create user '{userName}'.");
         }
 
         public static List<AspUser> FindAll()
@@ -63,20 +52,9 @@ namespace Membership.Business
             if (string.IsNullOrEmpty(userName))
                 throw new MissingValueException("UserName");
 
-            try
-            {
-                bool result = UserManagerFactory.Create().DeleteUser(userName);
-                if (!result)
-                    throw new BadOperationException($"Unable to delete user {userName}.");
-            }
-            catch (BadOperationException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw new BadOperationException($"Unable to remove user {userName} -> ${ex.Message}");
-            }
+            bool result = UserManagerFactory.Create().DeleteUser(userName);
+            if (!result)
+                throw new BadOperationException($"Unable to delete user '{userName}'.");
         }
     }
 }

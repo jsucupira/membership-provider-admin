@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Membership.Model.Users;
 
 namespace Membership.Model.Roles
 {
@@ -51,5 +52,12 @@ namespace Membership.Model.Roles
         /// <param name="userName">Name of the user.</param>
         /// <returns>List of roles that the user is in.</returns>
         IEnumerable<AspRole> FindRolesForUser(string userName);
+
+        /// <summary>
+        /// Finds the users in role.
+        /// </summary>
+        /// <param name="roleName">Name of the role.</param>
+        /// <returns>All users in the role.</returns>
+        IEnumerable<AspUser> FindUsersInRole(string roleName);
     }
 }

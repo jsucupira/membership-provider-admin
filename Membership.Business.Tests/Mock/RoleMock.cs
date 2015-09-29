@@ -78,5 +78,14 @@ namespace Membership.Business.Tests.Mock
 
             return new List<AspRole>();
         }
+
+        public IEnumerable<AspUser> FindUsersInRole(string roleName)
+        {
+            var role = RoleDataMock.FindByName(roleName);
+            if (role != null)
+                return role.AspUsers;
+
+            return new List<AspUser>();
+        }
     }
 }
