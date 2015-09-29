@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using DeepEqual.Syntax;
 using Membership.Business.Tests.Mock;
 using Membership.Common.Exceptions;
@@ -14,16 +15,20 @@ namespace Membership.Business.Tests
         [TestInitialize]
         public void Init()
         {
+            Monitor.Enter(MefLoader.SynchronizationLock);
+            //MefLoader.InitIdentityContainer(); // Uncomment to run integration test
             MefLoader.Init();
             UserDataMock.Reset();
             RoleDataMock.Reset();
+            UserServices.AddUser("Admin", "admin@test.com", "Nq2gzAQK9w1N");
+            RoleServices.CreateRole("Administrator");
         }
 
         [TestMethod]
         public void test_adding_user_to_role()
         {
-            UserServices.AddUser("jsucupira", "jsucupira@test.com", "test");
-            Assert.IsTrue(UserDataMock.FindAll().Count == 2);
+            UserServices.AddUser("jsucupira", "jsucupira@test.com", "Nq2gzAQK9w1N");
+            Assert.IsTrue(UserServices.FindAll().Count == 2);
             RoleServices.AddUserToRole("jsucupira", "Administrator");
             List<AspUser> expected = new List<AspUser>
             {
@@ -36,6 +41,7 @@ namespace Membership.Business.Tests
             };
             List<AspUser> actual = RoleServices.FindUsersInRole("Administrator");
             actual[0].AspRoles = new List<AspRole>();
+            expected[0].Id = actual[0].Id;
             Assert.IsTrue(expected.IsDeepEqual(actual));
         }
 

@@ -8,7 +8,7 @@ namespace Membership.Business.Tests.Mock
     internal static class UserDataMock
     {
         private static List<AspUser> _users = new List<AspUser>();
-        private static int _nextId = 2;
+        private static int _nextId = 1;
 
         public static void Add(AspUser user)
         {
@@ -39,8 +39,8 @@ namespace Membership.Business.Tests.Mock
 
         public static void Reset()
         {
-            _users = new List<AspUser> {new AspUser {UserName = "Admin", Id = "1"}};
-            _nextId = 2;
+            _users = new List<AspUser> ();
+            _nextId = 1;
         }
     }
 }

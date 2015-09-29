@@ -8,7 +8,7 @@ namespace Membership.Business.Tests.Mock
     internal static class RoleDataMock
     {
         private static List<AspRole> _roles = new List<AspRole>();
-        private static int _nextId = 2;
+        private static int _nextId = 1;
 
         public static void Add(AspRole role)
         {
@@ -39,15 +39,8 @@ namespace Membership.Business.Tests.Mock
 
         public static void Reset()
         {
-            _roles = new List<AspRole>
-            {
-                new AspRole
-                {
-                    Id = "1",
-                    Name = "Administrator"
-                }
-            };
-            _nextId = 2;
+            _roles = new List<AspRole>();
+            _nextId = 1;
         }
     }
 }

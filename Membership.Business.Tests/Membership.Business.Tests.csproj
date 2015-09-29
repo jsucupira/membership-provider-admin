@@ -39,8 +39,25 @@
       <HintPath>..\packages\DeepEqual.1.4.0.0\lib\net40\DeepEqual.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -72,12 +89,17 @@
       <Project>{07617CD2-7D75-4D78-803C-11A60F3E593C}</Project>
       <Name>Membership.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Membership.Implementations.AspNet\Membership.Implementations.AspNet.csproj">
+      <Project>{96822835-3403-4253-B0FD-4559A9315FC3}</Project>
+      <Name>Membership.Implementations.AspNet</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Membership.Model\Membership.Model.csproj">
       <Project>{42E8E54B-A944-4371-A7B1-E38E70E7DD74}</Project>
       <Name>Membership.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
     <Compile Include="RoleServicesTests.cs" />
   </ItemGroup>
