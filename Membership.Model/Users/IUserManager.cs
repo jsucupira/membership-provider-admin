@@ -19,7 +19,7 @@ namespace Membership.Model.Users
         /// Finds all.
         /// </summary>
         /// <returns>All users.</returns>
-        IList<AspUser> FindAll();
+        IEnumerable<AspUser> FindAll();
         /// <summary>
         /// Finds the name of the by user.
         /// </summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Membership.Common.Exceptions;
 using Membership.Common.Validations;
@@ -64,5 +65,10 @@ namespace Membership.Business
                 throw new BadOperationException($"Unable to remove user {userName} -> ${ex.Message}");
             }
         }
+
+        public static List<AspUser> FindAll()
+        {
+            return UserManagerFactory.Create().FindAll().ToList();
+        } 
     }
 }

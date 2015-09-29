@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using Membership.Model;
 using Membership.Model.Users;
 
 namespace Membership.Business.Tests.Mock
@@ -9,10 +8,6 @@ namespace Membership.Business.Tests.Mock
     [PartCreationPolicy(CreationPolicy.NonShared)]
     internal class UserMock : IUserManager
     {
-        public UserMock()
-        {
-            UserDataMock.Reset();
-        }
         public bool CreateUser(string userName, string email, string password)
         {
             if (UserDataMock.FindByUserName(userName) != null) return false;
@@ -25,7 +20,7 @@ namespace Membership.Business.Tests.Mock
             return true;
         }
 
-        public IList<AspUser> FindAll()
+        public IEnumerable<AspUser> FindAll()
         {
             return UserDataMock.FindAll();
         }

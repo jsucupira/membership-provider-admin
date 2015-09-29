@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DeepEqual, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DeepEqual.1.4.0.0\lib\net40\DeepEqual.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
@@ -51,6 +55,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MefLoader.cs" />
     <Compile Include="Mock\RoleDataMock.cs" />
     <Compile Include="Mock\RoleMock.cs" />
     <Compile Include="Mock\UserDataMock.cs" />
@@ -59,10 +64,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Membership.Business\Membership.Business.csproj">
+      <Project>{A25F0692-1F6A-4A7C-8E63-36B47A666BAD}</Project>
+      <Name>Membership.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership.Common\Membership.Common.csproj">
+      <Project>{07617CD2-7D75-4D78-803C-11A60F3E593C}</Project>
+      <Name>Membership.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Membership.Model\Membership.Model.csproj">
       <Project>{42E8E54B-A944-4371-A7B1-E38E70E7DD74}</Project>
       <Name>Membership.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
