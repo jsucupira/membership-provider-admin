@@ -15,7 +15,7 @@ namespace Membership.Implementations.AspNet
         {
             using (ApplicationUserManager manager = ApplicationUserManager.Create())
             {
-                var result = manager.Create(new IdentityUser
+                IdentityResult result = manager.Create(new IdentityUser
                 {
                     Email = email,
                     UserName = userName

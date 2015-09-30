@@ -3,11 +3,14 @@ using System.IO;
 using System.Reflection;
 using Membership.Common.Extensibility;
 using Membership.Implementations.AspNet;
+using Membership.Implementations.AspNet.Extensibility;
 
 namespace Membership.Business.Tests
 {
     public static class MefLoader
     {
+        public static object SynchronizationLock { get; } = new object();
+
         public static void Init()
         {
             AggregateCatalog catalog = new AggregateCatalog();
@@ -17,13 +20,10 @@ namespace Membership.Business.Tests
 
         public static void InitIdentityContainer()
         {
-            string path = Path.GetFullPath(@"..\..\..\Dependencies\identity\");
             AggregateCatalog catalog = new AggregateCatalog();
-            catalog.Catalogs.Add(new DirectoryCatalog(path, "*.dll"));
+            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetAssembly(typeof(MembershipImplementationsAspNetAssembly))));
             MefBase.SetContainer(new CompositionContainer(catalog, true));
             ApplicationDbContext.DeleteDatabase();
         }
-
-        public static object SynchronizationLock { get; } = new object();
     }
 }
