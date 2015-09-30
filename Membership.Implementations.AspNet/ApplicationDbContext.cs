@@ -14,14 +14,5 @@ namespace Membership.Implementations.AspNet
         {
             return new ApplicationDbContext();
         }
-
-        public static void DeleteDatabase()
-        {
-            using (ApplicationDbContext context = Create())
-            {
-                DropCreateDatabaseAlways<ApplicationDbContext> dropCreateDatabase = new DropCreateDatabaseAlways<ApplicationDbContext>();
-                dropCreateDatabase.InitializeDatabase(context);
-            }
-        }
     }
 }

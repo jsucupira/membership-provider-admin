@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Membership.Common.Exceptions;
 using Membership.Common.Validations;
@@ -29,9 +28,22 @@ namespace Membership.Business
                 throw new BadOperationException($"Unable to create user '{userName}'.");
         }
 
+        public static void DeleteUser(string userName)
+        {
+            if (string.IsNullOrEmpty(userName))
+                throw new MissingValueException("UserName");
+
+            bool result = UserManagerFactory.Create().DeleteUser(userName);
+            if (!result)
+                throw new BadOperationException($"Unable to delete user '{userName}'.");
+        }
+
         public static List<AspUser> FindAll()
         {
-            return UserManagerFactory.Create().FindAll().ToList();
+            List<AspUser> users = UserManagerFactory.Create().FindAll().ToList();
+            foreach (AspUser aspUser in users)
+                aspUser.AspRoles = RoleManagerFactory.Create().FindRolesForUser(aspUser.UserName).ToList();
+            return users;
         }
 
         public static AspUser FindUser(string userName)
@@ -45,16 +57,6 @@ namespace Membership.Business
 
             user.AspRoles = RoleManagerFactory.Create().FindRolesForUser(user.UserName).ToList();
             return user;
-        }
-
-        public static void RemoveUser(string userName)
-        {
-            if (string.IsNullOrEmpty(userName))
-                throw new MissingValueException("UserName");
-
-            bool result = UserManagerFactory.Create().DeleteUser(userName);
-            if (!result)
-                throw new BadOperationException($"Unable to delete user '{userName}'.");
         }
     }
 }

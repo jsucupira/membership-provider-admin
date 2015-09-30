@@ -10,7 +10,7 @@ namespace Membership.Implementations.AspNet
 {
     [Export(typeof (IRoleManager))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class RoleManager : IRoleManager
+    public class IdentityRoleManager : IRoleManager
     {
         public bool AddUserToRole(string userName, string roleName)
         {

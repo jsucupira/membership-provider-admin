@@ -13,7 +13,7 @@ namespace Membership.Business.Tests
     [TestClass]
     public class UserServicesTests : BaseTestClass
     {
-        public UserServicesTests() : base(integrationTest: false) { }
+        public UserServicesTests() : base(integrationType: IntegrationEnum.IdentityProvider) { }
 
         [TestMethod]
         [ExpectedException(typeof (BadOperationException), "Unable to create user admin")]
@@ -72,9 +72,10 @@ namespace Membership.Business.Tests
         [TestMethod]
         public void test_finding_user()
         {
-            AspUser expected = new AspUser {UserName = "Admin", Id = "1", Email = "admin@test.com"};
+            AspUser expected = new AspUser {UserName = "admin", Id = "1", Email = "admin@test.com"};
             AspUser actual = UserServices.FindUser("admin");
             expected.Id = actual.Id;
+            actual.UserName = actual.UserName.ToLower();
             Assert.IsTrue(expected.IsDeepEqual(actual));
         }
 
@@ -88,31 +89,28 @@ namespace Membership.Business.Tests
         [TestMethod]
         public void test_finding_users()
         {
-            List<AspUser> expected = new List<AspUser> {new AspUser {UserName = "Admin", Id = "1", Email = "admin@test.com"}};
+            List<AspUser> expected = new List<AspUser> {new AspUser {UserName = "admin", Id = "1", Email = "admin@test.com"}};
             List<AspUser> actual = UserServices.FindAll().ToList();
             expected[0].Id = actual[0].Id;
+            actual[0].UserName = actual[0].UserName.ToLower();
             Assert.IsTrue(expected.IsDeepEqual(actual));
             UserServices.AddUser("jsucupira", "jsucupira@test.com", "Nq2gzAQK9w1N");
             expected.Add(new AspUser {Id = "2", Email = "jsucupira@test.com", UserName = "jsucupira"});
 
-            Thread.Sleep(TimeSpan.FromSeconds(1));
-            actual = UserServices.FindAll();
-            expected[1].Id = actual[1].Id;
-
-            Assert.IsTrue(expected.IsDeepEqual(actual));
+            Assert.IsTrue(UserServices.FindAll().Count == 2);
         }
 
         [TestMethod]
         [ExpectedException(typeof (MissingValueException), "UserName is required.")]
         public void test_remove_user_validation1()
         {
-            UserServices.RemoveUser("");
+            UserServices.DeleteUser("");
         }
 
         [TestMethod]
         public void test_removing_user()
         {
-            UserServices.RemoveUser("admin");
+            UserServices.DeleteUser("admin");
             Assert.IsTrue(UserServices.FindAll().Count == 0);
             UserServices.AddUser("jsucupira", "jsucupira@test.com", "Nq2gzAQK9w1N");
             Assert.IsTrue(UserServices.FindAll().Count == 1);

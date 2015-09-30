@@ -58,6 +58,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -93,6 +94,10 @@
     <ProjectReference Include="..\Membership.Implementations.AspNet\Membership.Implementations.AspNet.csproj">
       <Project>{96822835-3403-4253-B0FD-4559A9315FC3}</Project>
       <Name>Membership.Implementations.AspNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership.Implementations.Traditional\Membership.Implementations.Traditional.csproj">
+      <Project>{B66349B9-DE73-43A4-95EB-D1A68B06F23F}</Project>
+      <Name>Membership.Implementations.Traditional</Name>
     </ProjectReference>
     <ProjectReference Include="..\Membership.Model\Membership.Model.csproj">
       <Project>{42E8E54B-A944-4371-A7B1-E38E70E7DD74}</Project>

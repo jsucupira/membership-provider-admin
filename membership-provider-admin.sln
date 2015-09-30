@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 - Implementations", "2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.Implementations.AspNet", "Membership.Implementations.AspNet\Membership.Implementations.AspNet.csproj", "{96822835-3403-4253-B0FD-4559A9315FC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.Implementations.Traditional", "Membership.Implementations.Traditional\Membership.Implementations.Traditional.csproj", "{B66349B9-DE73-43A4-95EB-D1A68B06F23F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{96822835-3403-4253-B0FD-4559A9315FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96822835-3403-4253-B0FD-4559A9315FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96822835-3403-4253-B0FD-4559A9315FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B66349B9-DE73-43A4-95EB-D1A68B06F23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B66349B9-DE73-43A4-95EB-D1A68B06F23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B66349B9-DE73-43A4-95EB-D1A68B06F23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B66349B9-DE73-43A4-95EB-D1A68B06F23F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +68,6 @@ Global
 		{07617CD2-7D75-4D78-803C-11A60F3E593C} = {8640AEE9-C385-46EB-8668-5B8A0B5E6DC4}
 		{475CCEEE-4195-463D-B682-A50BF2BF5C77} = {4B805419-7968-4A3B-904A-4189E2918EF7}
 		{96822835-3403-4253-B0FD-4559A9315FC3} = {475CCEEE-4195-463D-B682-A50BF2BF5C77}
+		{B66349B9-DE73-43A4-95EB-D1A68B06F23F} = {475CCEEE-4195-463D-B682-A50BF2BF5C77}
 	EndGlobalSection
 EndGlobal

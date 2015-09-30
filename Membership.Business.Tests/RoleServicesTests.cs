@@ -10,7 +10,7 @@ namespace Membership.Business.Tests
     [TestClass]
     public class RoleServicesTests : BaseTestClass
     {
-        public RoleServicesTests() : base(integrationTest: false) { }
+        public RoleServicesTests() : base(integrationType: IntegrationEnum.MembershipProvider) { }
 
         [TestMethod]
         public void test_adding_user_to_role()

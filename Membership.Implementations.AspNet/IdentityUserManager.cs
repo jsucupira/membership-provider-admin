@@ -9,7 +9,7 @@ namespace Membership.Implementations.AspNet
 {
     [Export(typeof (IUserManager))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class UserManager : IUserManager
+    public class IdentityUserManager : IUserManager
     {
         public bool CreateUser(string userName, string email, string password)
         {
