@@ -23,7 +23,6 @@ namespace Membership.Business.Tests
             AggregateCatalog catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetAssembly(typeof(MembershipImplementationsAspNetAssembly))));
             MefBase.SetContainer(new CompositionContainer(catalog, true));
-            ApplicationDbContext.DeleteDatabase();
         }
     }
 }

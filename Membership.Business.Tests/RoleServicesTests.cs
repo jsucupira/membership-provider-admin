@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
 using DeepEqual.Syntax;
-using Membership.Business.Tests.Mock;
 using Membership.Common.Exceptions;
 using Membership.Model.Roles;
 using Membership.Model.Users;
@@ -10,19 +8,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Membership.Business.Tests
 {
     [TestClass]
-    public class RoleServicesTests
+    public class RoleServicesTests : BaseTestClass
     {
-        [TestInitialize]
-        public void Init()
-        {
-            Monitor.Enter(MefLoader.SynchronizationLock);
-            //MefLoader.InitIdentityContainer(); // Uncomment to run integration test
-            MefLoader.Init();
-            UserDataMock.Reset();
-            RoleDataMock.Reset();
-            UserServices.AddUser("Admin", "admin@test.com", "Nq2gzAQK9w1N");
-            RoleServices.CreateRole("Administrator");
-        }
+        public RoleServicesTests() : base(integrationTest: false) { }
 
         [TestMethod]
         public void test_adding_user_to_role()

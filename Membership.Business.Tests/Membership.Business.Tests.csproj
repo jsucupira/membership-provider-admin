@@ -72,6 +72,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BaseTestClass.cs" />
     <Compile Include="MefLoader.cs" />
     <Compile Include="Mock\RoleDataMock.cs" />
     <Compile Include="Mock\RoleMock.cs" />
