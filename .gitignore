@@ -199,3 +199,9 @@ FakesAssemblies/
 
 #don't ignore
 !Membership.Implementations.AspNet/Dependencies*
+
+#grunt builds
+/Membership.Site/Scripts/app/_output/
+
+#typescript output
+/Membership.Site/Scripts/app/*/*.js*

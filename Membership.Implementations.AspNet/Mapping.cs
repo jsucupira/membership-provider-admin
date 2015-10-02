@@ -37,7 +37,6 @@ namespace Membership.Implementations.AspNet
             
             return new IdentityRole
             {
-                Id = role.Id,
                 Name = role.Name
             };
         }
@@ -48,7 +47,6 @@ namespace Membership.Implementations.AspNet
             
             return new AspRole
             {
-                Id = role.Id,
                 Name = role.Name
             };
         }

@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.Implementations.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.Implementations.Traditional", "Membership.Implementations.Traditional\Membership.Implementations.Traditional.csproj", "{B66349B9-DE73-43A4-95EB-D1A68B06F23F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.Site", "Membership.Site\Membership.Site.csproj", "{544CC7B2-16E0-4DC8-8DED-CAFD08A05077}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{B66349B9-DE73-43A4-95EB-D1A68B06F23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B66349B9-DE73-43A4-95EB-D1A68B06F23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B66349B9-DE73-43A4-95EB-D1A68B06F23F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{544CC7B2-16E0-4DC8-8DED-CAFD08A05077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544CC7B2-16E0-4DC8-8DED-CAFD08A05077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544CC7B2-16E0-4DC8-8DED-CAFD08A05077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544CC7B2-16E0-4DC8-8DED-CAFD08A05077}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +75,6 @@ Global
 		{475CCEEE-4195-463D-B682-A50BF2BF5C77} = {4B805419-7968-4A3B-904A-4189E2918EF7}
 		{96822835-3403-4253-B0FD-4559A9315FC3} = {475CCEEE-4195-463D-B682-A50BF2BF5C77}
 		{B66349B9-DE73-43A4-95EB-D1A68B06F23F} = {475CCEEE-4195-463D-B682-A50BF2BF5C77}
+		{544CC7B2-16E0-4DC8-8DED-CAFD08A05077} = {307719F2-A12F-4B76-B7E8-8B8C4A39E95E}
 	EndGlobalSection
 EndGlobal
