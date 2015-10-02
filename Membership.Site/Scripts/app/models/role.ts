@@ -1,4 +1,6 @@
-﻿class Role {
-    name: string;
-    users: User[];
+﻿module Membership {
+    export class Role {
+        name: string;
+        users: User[];
+    }
 }

@@ -120,11 +120,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <TypeScriptCompile Include="Scripts\app\helpers\utility.ts" />
     <TypeScriptCompile Include="Scripts\app\models\role.ts" />
     <Content Include="gruntfile.js" />
-    <Content Include="Scripts\app\staticValues.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\vendor\angular\angular.js" />
+    <Content Include="Scripts\vendor\angular\angular.min.js" />
     <Content Include="Web.config" />
+    <TypeScriptCompile Include="Scripts\app\services\roleServices.ts" />
     <TypeScriptCompile Include="Scripts\app\services\userServices.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -138,13 +140,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="package.json" />
+    <Content Include="packages.config" />
+    <Content Include="bower.json" />
+    <Content Include=".bowerrc" />
+    <Content Include="Scripts\vendor\angular\angular.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,8 +1,7 @@
 ﻿module Membership {
-    export class User {
-        roles: Role[];
+    export class UserRequest {
         email: string;
-        id: string;
         userName: string;
+        password: string;
     }
 }

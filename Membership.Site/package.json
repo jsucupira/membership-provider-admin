@@ -9,6 +9,8 @@
         "grunt-contrib-concat": "0.5.1",
         "grunt-contrib-uglify": "0.8.0",
         "grunt-contrib-watch": "0.6.1",
-        "grunt-typescript": "~0.7.0"
+        "grunt-typescript": "0.7.0",
+        "del": "2.0.2",
+        "grunt-bower": "0.20.0"
     }
 }

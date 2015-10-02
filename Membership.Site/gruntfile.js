@@ -8,21 +8,25 @@ module.exports = function (grunt) {
             options: {
                 force: true
             },
-            output: ["./scripts/app/_output"]
+            output: ["./scripts/app/_output", "./scripts/app/_vendor"]
         },
         typescript: {
             options: {
                 module: "commonjs"
             },
-            all: {
+            custom: {
                 src: ['./scripts/app/*/*.ts'],
-                dest: './scripts/app/_output'
+                dest: './scripts/_output'
             }
         },
         concat: {
-            all: {
-                src: ['./scripts/app/_output/*/*.js'],
-                dest: './scripts/app/_output/combined.js'
+            custom: {
+                src: ['./scripts/_output/*/*.js'],
+                dest: './scripts/_output/combined.js'
+            },
+            vendor: {
+                src: ['./scripts/vendor/*/*.js'],
+                dest: './scripts/_vendor/combined.js'
             }
         },
 
