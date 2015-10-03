@@ -204,6 +204,5 @@ FakesAssemblies/
 /Membership.Site/Scripts/_output/
 /Membership.Site/Scripts/_vendor/
 
-
 #typescript output
 /Membership.Site/Scripts/app/*/*.js*

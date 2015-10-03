@@ -5,21 +5,13 @@ using Membership.Model.Users;
 
 namespace Membership.Implementations.Traditional
 {
-    [Export(typeof (IUserManager))]
+    [Export(typeof(IUserManager))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     internal class ProviderUserManager : IUserManager
     {
-        public bool CreateUser(string userName, string email, string password)
+        public AspUser CreateUser(string userName, string email, string password)
         {
-            try
-            {
-                MembershipUser user = System.Web.Security.Membership.CreateUser(userName, password, email);
-            }
-            catch (MembershipCreateUserException)
-            {
-                return false;
-            }
-            return true;
+            return System.Web.Security.Membership.CreateUser(userName, password, email).Map();
         }
 
         public IEnumerable<AspUser> FindAll()

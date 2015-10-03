@@ -8,16 +8,16 @@ namespace Membership.Business.Tests.Mock
     [PartCreationPolicy(CreationPolicy.NonShared)]
     internal class UserMock : IUserManager
     {
-        public bool CreateUser(string userName, string email, string password)
+        public AspUser CreateUser(string userName, string email, string password)
         {
-            if (UserDataMock.FindByUserName(userName) != null) return false;
-
-            UserDataMock.Add(new AspUser
+            if (UserDataMock.FindByUserName(userName) != null) return null;
+            var user = new AspUser
             {
                 UserName = userName,
                 Email = email
-            });
-            return true;
+            };
+            UserDataMock.Add(user);
+            return user;
         }
 
         public IEnumerable<AspUser> FindAll()

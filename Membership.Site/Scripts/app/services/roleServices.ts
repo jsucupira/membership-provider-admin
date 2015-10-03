@@ -1,11 +1,12 @@
 ﻿module Membership {
+    import Constants = Helpers.Constants;
 
     export interface IRoleServices {
         addUserToRole(userName: string, roleName: string);
         createRole(name: string);
         findAll(): Role[];
         getByName(roleName: string): Role;
-        deleteUser(roleName: string);
+        deleteRole(roleName: string);
         removeUserFromRole(userName: string, roleName: string);
         findRolesForUser(userName: string): Role[];
         findUsersInRole(roleName: string): User[];
@@ -21,29 +22,121 @@
         }
 
         addUserToRole(userName: string, roleName: string) {
-            
+            var deferred = this.async.defer();
+
+            this.httpService({
+                method: "PUT",
+                url: Constants.apiBase() + "/roles/" + roleName + "/users/" + userName
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
         }
 
-        createRole(name: string) {}
+        createRole(name: string) {
+            var deferred = this.async.defer();
+            var userRole = new RoleRequest();
+
+            this.httpService({
+                method: "POST",
+                url: Constants.apiBase() + "/roles",
+                data: userRole
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
+        }
 
         findAll(): Role[] {
-             throw new Error("Not implemented");
+            var deferred = this.async.defer();
+            this.httpService({
+                method: "GET",
+                url: Constants.apiBase() + "/roles"
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
         }
 
         getByName(roleName: string): Role {
-             throw new Error("Not implemented");
+            var deferred = this.async.defer();
+            this.httpService({
+                method: "GET",
+                url: Constants.apiBase() + "/roles/" + roleName
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
         }
 
-        deleteUser(roleName: string) {}
+        deleteRole(roleName: string) {
 
-        removeUserFromRole(userName: string, roleName: string) {}
+            var deferred = this.async.defer();
+            this.httpService({
+                method: "DELETE",
+                url: Constants.apiBase() + "/roles/" + roleName
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
+        }
+
+        removeUserFromRole(userName: string, roleName: string) {
+            var deferred = this.async.defer();
+            
+            this.httpService({
+                method: "DELETE",
+                url: Constants.apiBase() + "/roles/" + roleName + "/users" + userName
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
+        }
 
         findRolesForUser(userName: string): Role[] {
-             throw new Error("Not implemented");
+            var deferred = this.async.defer();
+            this.httpService({
+                method: "GET",
+                url: Constants.apiBase + "/roles/users/" + userName + "/roles"
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
         }
 
         findUsersInRole(roleName: string): User[] {
-             throw new Error("Not implemented");
+            var deferred = this.async.defer();
+            this.httpService({
+                method: "GET",
+                url: Constants.apiBase + "/roles/" + roleName + "/users"
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
         }
     }
 }

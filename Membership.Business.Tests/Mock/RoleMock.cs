@@ -27,15 +27,15 @@ namespace Membership.Business.Tests.Mock
             return true;
         }
 
-        public bool CreateRole(string roleName)
+        public AspRole CreateRole(string roleName)
         {
-            if (RoleDataMock.FindByName(roleName) != null) return false;
-
-            RoleDataMock.Add(new AspRole
+            if (RoleDataMock.FindByName(roleName) != null) return null;
+            var role = new AspRole
             {
                 Name = roleName
-            });
-            return true;
+            };
+            RoleDataMock.Add(role);
+            return role;
         }
 
         public IEnumerable<AspRole> FindAll()

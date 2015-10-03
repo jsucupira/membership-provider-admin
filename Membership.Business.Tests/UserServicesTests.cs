@@ -13,7 +13,7 @@ namespace Membership.Business.Tests
     [TestClass]
     public class UserServicesTests : BaseTestClass
     {
-        public UserServicesTests() : base(integrationType: IntegrationEnum.IdentityProvider) { }
+        //public UserServicesTests() : base(integrationType: IntegrationEnum.IdentityProvider) { }
 
         [TestMethod]
         [ExpectedException(typeof (BadOperationException), "Unable to create user admin")]
@@ -29,7 +29,7 @@ namespace Membership.Business.Tests
             AspUser expected = new AspUser {Email = "jsucupira@test.com", UserName = "jsucupira", Id = "2"};
             UserServices.AddUser(expected.UserName, expected.Email, "Nq2gzAQK9w1N");
             Assert.IsTrue(UserServices.FindAll().Count == 2);
-            AspUser actual = UserServices.FindUser(expected.UserName);
+            AspUser actual = UserServices.GetUser(expected.UserName);
             expected.Id = actual.Id;
             Assert.IsTrue(expected.IsDeepEqual(actual));
         }
@@ -66,14 +66,14 @@ namespace Membership.Business.Tests
         [ExpectedException(typeof (NotFoundException), "User 'jsucupira' not found.")]
         public void test_finding_non_existing_user()
         {
-            UserServices.FindUser("jsucupira");
+            UserServices.GetUser("jsucupira");
         }
 
         [TestMethod]
         public void test_finding_user()
         {
             AspUser expected = new AspUser {UserName = "admin", Id = "1", Email = "admin@test.com"};
-            AspUser actual = UserServices.FindUser("admin");
+            AspUser actual = UserServices.GetUser("admin");
             expected.Id = actual.Id;
             actual.UserName = actual.UserName.ToLower();
             Assert.IsTrue(expected.IsDeepEqual(actual));
@@ -83,7 +83,7 @@ namespace Membership.Business.Tests
         [ExpectedException(typeof (MissingValueException), "UserName is required.")]
         public void test_finding_user_validation1()
         {
-            UserServices.FindUser(null);
+            UserServices.GetUser(null);
         }
 
         [TestMethod]

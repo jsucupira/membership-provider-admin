@@ -48,6 +48,14 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -57,6 +65,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -120,12 +129,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <TypeScriptCompile Include="Scripts\app\controllers\roleController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\userController.ts" />
     <TypeScriptCompile Include="Scripts\app\helpers\utility.ts" />
     <TypeScriptCompile Include="Scripts\app\models\role.ts" />
     <Content Include="gruntfile.js" />
+    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\roleRoute.js" />
+    <Content Include="Scripts\app\userRoute.js" />
+    <Content Include="Scripts\app\templates\roles\edit.html" />
+    <Content Include="Scripts\app\templates\roles\create.html" />
+    <Content Include="Scripts\app\templates\roles\list.html" />
+    <Content Include="Scripts\app\templates\roles\index.html" />
+    <Content Include="Scripts\app\templates\users\create.html" />
+    <Content Include="Scripts\app\templates\users\edit.html" />
+    <Content Include="Scripts\app\templates\users\index.html" />
+    <Content Include="Scripts\app\templates\users\list.html" />
+    <Content Include="Scripts\vendor\angular-route\angular-route.js" />
+    <Content Include="Scripts\vendor\angular-route\angular-route.min.js" />
     <Content Include="Scripts\vendor\angular\angular.js" />
     <Content Include="Scripts\vendor\angular\angular.min.js" />
+    <Content Include="Scripts\_output\combined.js" />
+    <Content Include="Scripts\_vendor\combined.js" />
     <Content Include="Web.config" />
+    <TypeScriptCompile Include="Scripts\app\models\roleRequest.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\userRequest.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\UserRoleRequest.ts" />
     <TypeScriptCompile Include="Scripts\app\services\roleServices.ts" />
     <TypeScriptCompile Include="Scripts\app\services\userServices.ts" />
   </ItemGroup>
@@ -133,6 +162,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controller\Api\RoleApiController.cs" />
+    <Compile Include="Controller\Api\UserApiController.cs" />
+    <Compile Include="Models\UserRequest.cs" />
     <Compile Include="Controller\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -159,16 +192,34 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\routes\" />
-    <Folder Include="Scripts\app\templates\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\models\user.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Membership.Business\Membership.Business.csproj">
+      <Project>{A25F0692-1F6A-4A7C-8E63-36B47A666BAD}</Project>
+      <Name>Membership.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership.Common\Membership.Common.csproj">
+      <Project>{07617CD2-7D75-4D78-803C-11A60F3E593C}</Project>
+      <Name>Membership.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership.Implementations.AspNet\Membership.Implementations.AspNet.csproj">
+      <Project>{96822835-3403-4253-B0FD-4559A9315FC3}</Project>
+      <Name>Membership.Implementations.AspNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership.Implementations.Traditional\Membership.Implementations.Traditional.csproj">
+      <Project>{B66349B9-DE73-43A4-95EB-D1A68B06F23F}</Project>
+      <Name>Membership.Implementations.Traditional</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership.Model\Membership.Model.csproj">
+      <Project>{42E8E54B-A944-4371-A7B1-E38E70E7DD74}</Project>
+      <Name>Membership.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

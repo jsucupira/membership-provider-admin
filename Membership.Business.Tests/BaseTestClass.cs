@@ -30,12 +30,13 @@ namespace Membership.Business.Tests
             {
                 MefLoader.Init(_integrationEnum);
 
-                UserServices.FindAll().ForEach(t =>
+                UserServices.FindAll().ForEach(user =>
                 {
-                    foreach (AspRole aspRole in t.AspRoles)
-                        RoleServices.RemoveUserFromRole(t.UserName, aspRole.Name);
+                    user.AspRoles = RoleServices.FindRolesForUser(user.UserName);
+                    foreach (AspRole aspRole in user.AspRoles)
+                        RoleServices.RemoveUserFromRole(user.UserName, aspRole.Name);
 
-                    UserServices.DeleteUser(t.UserName);
+                    UserServices.DeleteUser(user.UserName);
                 });
 
 

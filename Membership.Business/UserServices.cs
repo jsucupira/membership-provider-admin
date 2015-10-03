@@ -9,7 +9,7 @@ namespace Membership.Business
 {
     public static class UserServices
     {
-        public static void AddUser(string userName, string email, string password)
+        public static AspUser AddUser(string userName, string email, string password)
         {
             if (string.IsNullOrEmpty(userName))
                 throw new MissingValueException("UserName");
@@ -23,9 +23,11 @@ namespace Membership.Business
             if (!email.IsValidEmail())
                 throw new InvalidValueException("Email Address", email);
 
-            bool result = UserManagerFactory.Create().CreateUser(userName, email, password);
-            if (!result)
+            var result = UserManagerFactory.Create().CreateUser(userName, email, password);
+            if (result == null)
                 throw new BadOperationException($"Unable to create user '{userName}'.");
+
+            return result;
         }
 
         public static void DeleteUser(string userName)
@@ -41,12 +43,10 @@ namespace Membership.Business
         public static List<AspUser> FindAll()
         {
             List<AspUser> users = UserManagerFactory.Create().FindAll().ToList();
-            foreach (AspUser aspUser in users)
-                aspUser.AspRoles = RoleManagerFactory.Create().FindRolesForUser(aspUser.UserName).ToList();
             return users;
         }
 
-        public static AspUser FindUser(string userName)
+        public static AspUser GetUser(string userName)
         {
             if (string.IsNullOrEmpty(userName))
                 throw new MissingValueException("UserName");

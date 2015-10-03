@@ -11,7 +11,7 @@ namespace Membership.Implementations.AspNet
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class IdentityUserManager : IUserManager
     {
-        public bool CreateUser(string userName, string email, string password)
+        public AspUser CreateUser(string userName, string email, string password)
         {
             using (ApplicationUserManager manager = ApplicationUserManager.Create())
             {
@@ -20,7 +20,10 @@ namespace Membership.Implementations.AspNet
                     Email = email,
                     UserName = userName
                 }, password);
-                return result.Succeeded;
+                if (result.Succeeded)
+                    return FindByUserName(userName);
+
+                return null;
             }
         }
 

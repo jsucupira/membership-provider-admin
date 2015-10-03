@@ -23,10 +23,15 @@ namespace Membership.Implementations.AspNet
             }
         }
 
-        public bool CreateRole(string roleName)
+        public AspRole CreateRole(string roleName)
         {
             using (ApplicationRoleManager manager = ApplicationRoleManager.Create())
-                return manager.Create(new IdentityRole(roleName)).Succeeded;
+            {
+                if (manager.Create(new IdentityRole(roleName)).Succeeded)
+                    return FindByName(roleName);
+                else
+                    return null;
+            }
         }
 
         public IEnumerable<AspRole> FindAll()

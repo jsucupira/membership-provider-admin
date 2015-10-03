@@ -14,7 +14,7 @@ namespace Membership.Model.Users
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <returns><c>true</c> if user was created, <c>false</c> otherwise.</returns>
-        bool CreateUser(string userName, string email, string password);
+        AspUser CreateUser(string userName, string email, string password);
         /// <summary>
         /// Finds all.
         /// </summary>

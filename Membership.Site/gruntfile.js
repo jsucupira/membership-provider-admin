@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                 dest: './scripts/_output/combined.js'
             },
             vendor: {
-                src: ['./scripts/vendor/*/*.js'],
+                src: ['./scripts/vendor/angular/*.js', './scripts/vendor/angular-route/*.js'],
                 dest: './scripts/_vendor/combined.js'
             }
         },

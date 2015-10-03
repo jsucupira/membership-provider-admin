@@ -1,5 +1,5 @@
 ﻿module Membership {
-    import Constants = Membership.Helpers.Constants;
+    import Constants = Helpers.Constants;
 
     export interface IUserServices {
         createUser(userName: string, email: string, password: string);
@@ -9,6 +9,8 @@
     }
 
     export class UserServices implements IUserServices {
+        static $inject = ['$http', '$q'];
+
         private httpService: any;
         private async: any;
 
@@ -26,7 +28,7 @@
 
             this.httpService({
                 method: "POST",
-                url: Constants.apiBase + "/users",
+                url: Constants.apiBase() + "/users",
                 data: user
             }).success(data => {
                 deferred.resolve(data);
@@ -41,7 +43,7 @@
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",
-                url: Constants.apiBase + "/users"
+                url: Constants.apiBase() + "/users"
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {
@@ -55,7 +57,7 @@
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",
-                url: Constants.apiBase + "/users/" + userName
+                url: Constants.apiBase() + "/users/" + userName
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {
@@ -69,7 +71,7 @@
             var deferred = this.async.defer();
             this.httpService({
                 method: "DELETE",
-                url: Constants.apiBase + "/users/" + userName
+                url: Constants.apiBase() + "/users/" + userName
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {

@@ -18,20 +18,10 @@ namespace Membership.Implementations.Traditional
             return Roles.IsUserInRole(userName, roleName);
         }
 
-        public bool CreateRole(string roleName)
+        public AspRole CreateRole(string roleName)
         {
-            try
-            {
-                Roles.CreateRole(roleName);
-                return Roles.RoleExists(roleName);
-            }
-            catch (ProviderException exception)
-            {
-                if (exception.Message.Equals($"The role '{roleName}' already exists."))
-                    return false;
-
-                throw;
-            }
+            Roles.CreateRole(roleName);
+            return FindByName(roleName);
         }
 
         public IEnumerable<AspRole> FindAll()

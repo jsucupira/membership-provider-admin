@@ -21,7 +21,8 @@
   ],
   "dependencies": {
     "angular": "~1.4.7",
-    "jasmine-core": "jasmine#~2.3.4"
+    "jasmine-core": "jasmine#~2.3.4",
+    "angular-route": "~1.4.7"
   },
   "devDependencies": {
     "jasmine": "2.3.4"

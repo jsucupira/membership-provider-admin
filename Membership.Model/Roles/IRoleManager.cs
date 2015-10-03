@@ -20,7 +20,7 @@ namespace Membership.Model.Roles
         /// </summary>
         /// <param name="roleName">Name of the role.</param>
         /// <returns><c>true</c> if the role was created, <c>false</c> otherwise.</returns>
-        bool CreateRole(string roleName);
+        AspRole CreateRole(string roleName);
         /// <summary>
         /// Finds all.
         /// </summary>

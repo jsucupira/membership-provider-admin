@@ -10,7 +10,7 @@ namespace Membership.Business.Tests
     [TestClass]
     public class RoleServicesTests : BaseTestClass
     {
-        public RoleServicesTests() : base(integrationType: IntegrationEnum.MembershipProvider) { }
+        //public RoleServicesTests() : base(integrationType: IntegrationEnum.MembershipProvider) { }
 
         [TestMethod]
         public void test_adding_user_to_role()
@@ -86,14 +86,14 @@ namespace Membership.Business.Tests
         [ExpectedException(typeof (NotFoundException), "Role 'User' not found.")]
         public void test_find_non_existing_role()
         {
-            RoleServices.FindRole("User");
+            RoleServices.GetRole("User");
         }
 
         [TestMethod]
         [ExpectedException(typeof (MissingValueException), "RoleName is required.")]
         public void test_find_role()
         {
-            RoleServices.FindRole(null);
+            RoleServices.GetRole(null);
         }
 
         [TestMethod]
