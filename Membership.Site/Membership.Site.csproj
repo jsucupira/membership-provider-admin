@@ -157,6 +157,14 @@
     <TypeScriptCompile Include="Scripts\app\models\UserRoleRequest.ts" />
     <TypeScriptCompile Include="Scripts\app\services\roleServices.ts" />
     <TypeScriptCompile Include="Scripts\app\services\userServices.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -165,6 +173,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controller\Api\RoleApiController.cs" />
     <Compile Include="Controller\Api\UserApiController.cs" />
+    <Compile Include="Controller\UsersController.cs" />
     <Compile Include="Models\UserRequest.cs" />
     <Compile Include="Controller\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,6 +192,7 @@
     <Content Include="bower.json" />
     <Content Include=".bowerrc" />
     <Content Include="Scripts\vendor\angular\angular.min.js.map" />
+    <Content Include="Views\Users\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

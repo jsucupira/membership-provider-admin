@@ -1,15 +1,17 @@
-﻿module Membership {
+﻿/// <reference path="../../typings/angularjs/angular.d.ts" />
+
+module Membership {
     import Constants = Helpers.Constants;
 
     export interface IRoleServices {
         addUserToRole(userName: string, roleName: string);
         createRole(name: string);
-        findAll(): Role[];
-        getByName(roleName: string): Role;
+        findAll(): ng.IPromise<Role[]>;
+        getByName(roleName: string): ng.IPromise<Role>;
         deleteRole(roleName: string);
         removeUserFromRole(userName: string, roleName: string);
-        findRolesForUser(userName: string): Role[];
-        findUsersInRole(roleName: string): User[];
+        findRolesForUser(userName: string): ng.IPromise<Role[]>;
+        findUsersInRole(roleName: string): ng.IPromise<User[]>;
     }
 
     export class RoleServices implements IRoleServices {
@@ -53,7 +55,7 @@
             return deferred.promise;
         }
 
-        findAll(): Role[] {
+        findAll(): ng.IPromise<Role[]> {
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",
@@ -67,7 +69,7 @@
             return deferred.promise;
         }
 
-        getByName(roleName: string): Role {
+        getByName(roleName: string): ng.IPromise<Role> {
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",
@@ -98,7 +100,7 @@
 
         removeUserFromRole(userName: string, roleName: string) {
             var deferred = this.async.defer();
-            
+
             this.httpService({
                 method: "DELETE",
                 url: Constants.apiBase() + "/roles/" + roleName + "/users" + userName
@@ -111,7 +113,7 @@
             return deferred.promise;
         }
 
-        findRolesForUser(userName: string): Role[] {
+        findRolesForUser(userName: string): ng.IPromise<Role[]> {
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",
@@ -125,7 +127,7 @@
             return deferred.promise;
         }
 
-        findUsersInRole(roleName: string): User[] {
+        findUsersInRole(roleName: string): ng.IPromise<User[]> {
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",

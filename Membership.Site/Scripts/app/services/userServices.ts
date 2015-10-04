@@ -1,10 +1,11 @@
-﻿module Membership {
+﻿/// <reference path="../../typings/angularjs/angular.d.ts" />
+module Membership {
     import Constants = Helpers.Constants;
 
     export interface IUserServices {
         createUser(userName: string, email: string, password: string);
-        findAll(): User[];
-        getByName(userName: string): User;
+        findAll(): ng.IPromise<User[]>;
+        getByName(userName: string): ng.IPromise<User>;
         deleteUser(userName: string);
     }
 
@@ -32,14 +33,15 @@
                 data: user
             }).success(data => {
                 deferred.resolve(data);
+                return data;
             }).error(err => {
                 console.log(err);
                 deferred.reject(err);
-            });;
+            });
             return deferred.promise;
         }
 
-        findAll(): User[] {
+        findAll(): ng.IPromise<User[]> {
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",
@@ -53,7 +55,7 @@
             return deferred.promise;
         }
 
-        getByName(userName: string): User {
+        getByName(userName: string): ng.IPromise<User> {
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",

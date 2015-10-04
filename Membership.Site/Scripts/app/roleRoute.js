@@ -3,7 +3,7 @@
     var appController = angular.module("Membership.Site");
 
     appController.config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/',
+        $routeProvider.when('/roles',
                 {
                     title: 'Roles Page',
                     templateUrl: './scripts/app/templates/roles/index.html',
