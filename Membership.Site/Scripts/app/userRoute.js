@@ -26,7 +26,7 @@
                 templateUrl: '/scripts/app/templates/users/list.html',
                 controller: 'userController'
             })
-            .when('/users/edit/:id',
+            .when('/users/update/:userName',
             {
                 title: 'Edit User',
                 templateUrl: '/scripts/app/templates/users/edit.html',

@@ -16,6 +16,12 @@ namespace Membership.Business.Tests.Mock
             _users.Add(user);
             _nextId += 1;
         }
+        public static void Update(AspUser user)
+        {
+            AspUser userInfo = _users.Find(t => t.UserName.Equals(user.UserName, StringComparison.OrdinalIgnoreCase));
+            int index = _users.IndexOf(userInfo);
+            _users[index] = user;
+        }
 
         public static List<AspUser> FindAll()
         {
@@ -25,6 +31,11 @@ namespace Membership.Business.Tests.Mock
         public static AspUser FindByUserName(string userName)
         {
             return _users.Find(t => t.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
+        }
+        
+        public static AspUser FindByEmail(string email)
+        {
+            return _users.Find(t => t.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
         }
 
         public static void Remove(string userName)

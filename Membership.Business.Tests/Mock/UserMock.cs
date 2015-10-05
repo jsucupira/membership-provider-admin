@@ -11,13 +11,25 @@ namespace Membership.Business.Tests.Mock
         public AspUser CreateUser(string userName, string email, string password)
         {
             if (UserDataMock.FindByUserName(userName) != null) return null;
-            var user = new AspUser
+            AspUser user = new AspUser
             {
                 UserName = userName,
                 Email = email
             };
             UserDataMock.Add(user);
             return user;
+        }
+
+        public void UpdateUserEmail(string oldEmail, string newEmail)
+        {
+            AspUser user = UserDataMock.FindByEmail(oldEmail);
+            user.Email = newEmail;
+            UserDataMock.Update(user);
+        }
+
+        public bool UpdatePassword(string userName, string oldPassword, string newPassword)
+        {
+            return true;
         }
 
         public IEnumerable<AspUser> FindAll()

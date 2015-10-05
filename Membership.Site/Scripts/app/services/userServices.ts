@@ -7,6 +7,7 @@ module Membership {
         findAll(): ng.IPromise<User[]>;
         getByName(userName: string): ng.IPromise<User>;
         deleteUser(userName: string);
+        updateUser(user: User, newEmail: string);
     }
 
     export class UserServices implements IUserServices {
@@ -29,7 +30,7 @@ module Membership {
 
             this.httpService({
                 method: "POST",
-                url: Constants.apiBase() + "/users",
+                url: Constants.apiBase() + "/users/create",
                 data: user
             }).success(data => {
                 deferred.resolve(data);
@@ -46,6 +47,26 @@ module Membership {
             this.httpService({
                 method: "GET",
                 url: Constants.apiBase() + "/users"
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
+        }
+
+        updateUser(user: User, newEmail: string) {
+            var deferred = this.async.defer();
+            var userRequest = new UserRequest();
+            userRequest.userName = user.userName;
+            userRequest.email = user.email;
+            userRequest.newEmail = newEmail;
+
+            this.httpService({
+                method: "PUT",
+                url: Constants.apiBase() + "/users/" + user.userName + "/update",
+                data: userRequest
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {

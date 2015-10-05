@@ -9,7 +9,7 @@ namespace Membership.Site.Controller.Api
     [RoutePrefix("api/users")]
     public class UserApiController : ApiController
     {
-        [Route("")]
+        [Route("create")]
         [HttpPost]
         public AspUser Create(UserRequest userRequest)
         {
@@ -35,6 +35,13 @@ namespace Membership.Site.Controller.Api
         public AspUser GetByName(string userName)
         {
             return UserServices.GetUser(userName);
+        }
+
+        [Route("{userName}/update")]
+        [HttpPut]
+        public void UpdateUser([FromUri]string userName, UserRequest userRequest)
+        {
+            UserServices.UpdateUser(userRequest.Email, userRequest.NewEmail);
         }
     }
 }

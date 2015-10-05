@@ -58,5 +58,36 @@ namespace Membership.Business
             user.AspRoles = RoleManagerFactory.Create().FindRolesForUser(user.UserName).ToList();
             return user;
         }
+
+        public static void UpdateUser(string oldEmail, string newEmail)
+        {
+            if (string.IsNullOrEmpty(oldEmail))
+                throw new MissingValueException("Old Email Address");
+
+            if (string.IsNullOrEmpty(newEmail))
+                throw new MissingValueException("New Email Address");
+
+            if (!oldEmail.IsValidEmail())
+                throw new InvalidValueException("Old Email Address", oldEmail);
+
+            if (!newEmail.IsValidEmail())
+                throw new InvalidValueException("New Email Address", newEmail);
+
+            UserManagerFactory.Create().UpdateUserEmail(oldEmail, newEmail);
+        }
+
+        public static bool UpdateUserPassword(string userName, string oldPassword, string newPassword)
+        {
+            if (string.IsNullOrEmpty(userName))
+                throw new MissingValueException("UserName");
+
+            if (string.IsNullOrEmpty(oldPassword))
+                throw new MissingValueException("Old Password");
+
+            if (string.IsNullOrEmpty(newPassword))
+                throw new MissingValueException("New Password");
+
+            return UserManagerFactory.Create().UpdatePassword(userName, oldPassword, newPassword);
+        }
     }
 }

@@ -16,6 +16,20 @@ namespace Membership.Model.Users
         /// <returns><c>true</c> if user was created, <c>false</c> otherwise.</returns>
         AspUser CreateUser(string userName, string email, string password);
         /// <summary>
+        /// Updates the user.
+        /// </summary>
+        /// <param name="oldEmail">The old email.</param>
+        /// <param name="newEmail">The new email.</param>
+        void UpdateUserEmail(string oldEmail, string newEmail);
+        /// <summary>
+        /// Updates the password.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="oldPassword">The old password.</param>
+        /// <param name="newPassword">The new password.</param>
+        /// <returns><c>true</c> if able to update password, <c>false</c> otherwise.</returns>
+        bool UpdatePassword(string userName, string oldPassword, string newPassword);
+        /// <summary>
         /// Finds all.
         /// </summary>
         /// <returns>All users.</returns>

@@ -27,6 +27,31 @@ namespace Membership.Implementations.AspNet
             }
         }
 
+        public void UpdateUserEmail(string oldEmail, string newEmail)
+        {
+            using (ApplicationUserManager manager = ApplicationUserManager.Create())
+            {
+                IdentityUser user = manager.FindByEmail(oldEmail);
+                if (user != null)
+                {
+                    user.Email = newEmail;
+                    manager.Update(user);
+                }
+            }
+        }
+
+        public bool UpdatePassword(string userName, string oldPassword, string newPassword)
+        {
+            using (ApplicationUserManager manager = ApplicationUserManager.Create())
+            {
+                IdentityUser user = manager.FindByEmail(userName);
+                if (user != null)
+                    return manager.ChangePassword(user.Id, oldPassword, newPassword).Succeeded;
+
+                return false;
+            }
+        }
+
         public IEnumerable<AspUser> FindAll()
         {
             using (ApplicationUserManager manager = ApplicationUserManager.Create())

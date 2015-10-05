@@ -7,7 +7,7 @@
                     <th>User Name</th>
                     <th>Email</th>
                 </tr>
-                <tr ng-repeat="u in users">
+                <tr ng-repeat="u in users" ng-click="edit(u.userName)" style="cursor: pointer;">
                     <td><input type="checkbox"></td>
                     <td>{{u.userName}}</td>
                     <td>{{u.email}}</td>
