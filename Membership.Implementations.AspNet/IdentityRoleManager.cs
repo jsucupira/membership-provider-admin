@@ -108,5 +108,18 @@ namespace Membership.Implementations.AspNet
                 return userList;
             }
         }
+
+        public void UpdateName(string oldName, string newName)
+        {
+            using (ApplicationRoleManager manager = ApplicationRoleManager.Create())
+            {
+                IdentityRole role = manager.FindByName(oldName);
+                if (role != null)
+                {
+                    role.Name = newName;
+                    manager.Update(role);
+                }
+            }
+        }
     }
 }

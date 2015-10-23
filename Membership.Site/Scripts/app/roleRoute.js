@@ -8,6 +8,30 @@
                     title: 'Roles Page',
                     templateUrl: './scripts/app/templates/roles/index.html',
                     controller: 'roleController'
+                })
+                .when('/roles/create',
+                {
+                    title: 'Create Role',
+                    templateUrl: '/scripts/app/templates/roles/create.html',
+                    controller: 'roleController'
+                })
+                .when('/roles/list',
+                {
+                    title: 'List Roles',
+                    templateUrl: '/scripts/app/templates/roles/list.html',
+                    controller: 'roleController'
+                })
+                .when('/roles/search',
+                {
+                    title: 'Search Roles',
+                    templateUrl: '/scripts/app/templates/roles/search.html',
+                    controller: 'roleController'
+                })
+                .when('/roles/update/:roleName',
+                {
+                    title: 'Edit Role',
+                    templateUrl: '/scripts/app/templates/roles/edit.html',
+                    controller: 'roleController'
                 });
     }]);
 

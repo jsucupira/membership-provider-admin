@@ -57,5 +57,14 @@ namespace Membership.Implementations.Traditional
             List<string> users = Roles.GetUsersInRole(roleName).ToList();
             return users.Select(userName => System.Web.Security.Membership.GetUser(userName).Map());
         }
+
+        public void UpdateName(string oldName, string newName)
+        {
+            string[] users = Roles.GetUsersInRole(oldName);
+            Roles.CreateRole(newName);
+            Roles.AddUsersToRole(users, newName);
+            Roles.RemoveUsersFromRole(users, oldName);
+            Roles.DeleteRole(oldName);
+        }
     }
 }

@@ -1,1 +1,15 @@
-﻿
+﻿<div class="main-content">
+    <div class="container">
+        <form class="form-horizontal" role="form" name="createForm">
+            <div class="form-group">
+                <label for="name" class="col-md-2 control-label">Email Address</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" placeholder="Email Address" ng-model="user.email" ng-required="true">
+                </div>
+            </div>
+
+
+            <button ng-click="updateUser()">Update Email</button>
+        </form>
+    </div>
+</div>

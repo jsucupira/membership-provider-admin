@@ -87,5 +87,10 @@ namespace Membership.Business.Tests.Mock
 
             return new List<AspUser>();
         }
+
+        public void UpdateName(string oldName, string newName)
+        {
+            RoleDataMock.ChangeName(oldName, newName);
+        }
     }
 }

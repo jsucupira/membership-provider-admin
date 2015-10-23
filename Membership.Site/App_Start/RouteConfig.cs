@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Membership.Site
@@ -15,18 +11,14 @@ namespace Membership.Site
 
             //routes.MapMvcAttributeRoutes();
 
-            routes.MapRoute(
-                name: "Users",
-                url: "users/{relative}/{*id}",
-                defaults: new { controller = "Users", action = "Index", id = UrlParameter.Optional }
-            );
+            routes.MapRoute("UsersRoute", "users/{relative}/{*id}", 
+                new {controller = "Users", action = "Index", id = UrlParameter.Optional});
 
-            routes.MapRoute(
-                name: "Direct",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            routes.MapRoute("RolesRoute", "roles/{relative}/{*id}", 
+                new {controller = "Roles", action = "Index", id = UrlParameter.Optional});
+
+            routes.MapRoute("Direct", "{controller}/{action}/{id}", 
+                new {controller = "Home", action = "Index", id = UrlParameter.Optional});
         }
     }
 }
-

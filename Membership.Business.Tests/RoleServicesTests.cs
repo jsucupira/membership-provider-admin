@@ -131,5 +131,40 @@ namespace Membership.Business.Tests
         {
             RoleServices.RemoveUserFromRole("", "Administrator");
         }
+
+        [TestMethod]
+        public void test_renaming_role()
+        {
+            string oldName = "User";
+            string newName = "Users";
+            RoleServices.CreateRole(oldName);
+
+            RoleServices.RenameRole(oldName, newName);
+            Assert.IsNotNull(RoleServices.GetRole(newName));
+            UserServices.AddUser("jsucupira", "jsucupira@test.com", "Nq2gzAQK9w1N");
+            RoleServices.AddUserToRole("jsucupira", "Users");
+            List<AspUser> expected = new List<AspUser>
+            {
+                new AspUser
+                {
+                    Email = "jsucupira@test.com",
+                    Id = "2",
+                    UserName = "jsucupira"
+                }
+            };
+            List<AspUser> actual = RoleServices.FindUsersInRole("Users");
+            actual[0].AspRoles = new List<AspRole>();
+            expected[0].Id = actual[0].Id;
+            Assert.IsTrue(expected.IsDeepEqual(actual));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotFoundException), "Role 'User' not found.")]
+        public void test_rename_non_exist_role()
+        {
+            string oldName = "User";
+            string newName = "Users";
+            RoleServices.RenameRole(oldName, newName);
+        }
     }
 }

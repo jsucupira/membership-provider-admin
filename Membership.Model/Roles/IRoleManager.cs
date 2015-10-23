@@ -45,19 +45,23 @@ namespace Membership.Model.Roles
         /// <param name="roleName">Name of the role.</param>
         /// <returns><c>true</c> if user was removed from role, <c>false</c> otherwise.</returns>
         bool RemoveUserFromRole(string userName, string roleName);
-
         /// <summary>
         /// Finds the roles for user.
         /// </summary>
         /// <param name="userName">Name of the user.</param>
         /// <returns>List of roles that the user is in.</returns>
         IEnumerable<AspRole> FindRolesForUser(string userName);
-
         /// <summary>
         /// Finds the users in role.
         /// </summary>
         /// <param name="roleName">Name of the role.</param>
         /// <returns>All users in the role.</returns>
         IEnumerable<AspUser> FindUsersInRole(string roleName);
+        /// <summary>
+        /// Updates the name.
+        /// </summary>
+        /// <param name="oldName">The old name.</param>
+        /// <param name="newName">The new name.</param>
+        void UpdateName(string oldName, string newName);
     }
 }

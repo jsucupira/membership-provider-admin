@@ -24,6 +24,14 @@ namespace Membership.Business.Tests.Mock
             return _roles.Find(t => t.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
 
+        public static void ChangeName(string oldName, string newName)
+        {
+            var role = _roles.Find(t => t.Name.Equals(oldName, StringComparison.OrdinalIgnoreCase));
+            var index = _roles.IndexOf(role);
+            role.Name = newName;
+            _roles[index] = role;
+        }
+
         public static void Remove(string name)
         {
             AspRole role = _roles.Find(t => t.Name.Equals(name, StringComparison.OrdinalIgnoreCase));

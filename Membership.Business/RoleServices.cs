@@ -94,5 +94,20 @@ namespace Membership.Business
         {
             return RoleManagerFactory.Create().FindRolesForUser(userName).ToList();
         }
+
+        public static void RenameRole(string oldName, string newName)
+        {
+            if (string.IsNullOrEmpty(oldName))
+                throw new MissingValueException("Old Role Name");
+
+            if (string.IsNullOrEmpty(newName))
+                throw new MissingValueException("New Role Name");
+
+            AspRole role = RoleManagerFactory.Create().FindByName(oldName);
+            if (role == null)
+                throw new NotFoundException("Role", oldName);
+
+            RoleManagerFactory.Create().UpdateName(oldName, newName);
+        }
     }
 }

@@ -47,7 +47,6 @@
 
             if (locationUrl === "/users/list") {
                 $scope.findAll();
-                console.log("got it");
             }
             else if (locationUrl.toString().startsWith("/users/update")) {
                 $scope.getByName($routeParams.userName);

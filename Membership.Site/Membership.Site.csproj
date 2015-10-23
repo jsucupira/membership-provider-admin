@@ -136,6 +136,7 @@
     <Content Include="gruntfile.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\roleRoute.js" />
+    <Content Include="Scripts\app\templates\roles\search.html" />
     <Content Include="Scripts\app\templates\users\search.html" />
     <Content Include="Scripts\app\userRoute.js" />
     <Content Include="Scripts\app\templates\roles\edit.html" />

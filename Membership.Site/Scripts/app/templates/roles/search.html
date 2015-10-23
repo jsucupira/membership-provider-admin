@@ -1,6 +1,6 @@
 ﻿<div class="main-content">
     <div class="container">
-        <form class="form-horizontal" role="form" name="createForm">
+        <form class="form-horizontal" role="form">
 
             <div class="form-group">
                 <label for="name" class="col-md-2 control-label">Role Name</label>
@@ -9,7 +9,10 @@
                 </div>
             </div>
 
-            <button ng-click="create()">Create Role</button>
+            <button ng-click="search()">Search by Role Name</button>
         </form>
+        <div>
+            <span ng-include="'/scripts/app/templates/roles/list.html'"></span>
+        </div>
     </div>
 </div>

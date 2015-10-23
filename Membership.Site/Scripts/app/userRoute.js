@@ -17,13 +17,13 @@
             })
             .when('/users/list',
             {
-                title: 'List User',
+                title: 'List Users',
                 templateUrl: '/scripts/app/templates/users/list.html',
                 controller: 'userController'
             })
             .when('/users/search',
             {
-                title: 'Search User',
+                title: 'Search Users',
                 templateUrl: '/scripts/app/templates/users/search.html',
                 controller: 'userController'
             })
