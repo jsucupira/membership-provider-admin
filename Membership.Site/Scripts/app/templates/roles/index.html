@@ -1,1 +1,20 @@
-﻿<button ng-click="findAll()">click me!</button>
+﻿<div class="main-content">
+    <div class="container">
+        <div class="page-content">
+            <div class="page-users">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="/roles/create" class="br-red" data-toggle="tab"><i class="fa fa-plus red"></i> Add New</a>
+                    </li>
+                    <li>
+                        <a href="/roles/search" class="br-green" data-toggle="tab"><i class="fa fa-search green"></i> Search</a>
+                    </li>
+                </ul>
+            </div>
+            <div ng-init="findAll()">
+                <span ng-include="'/scripts/app/templates/roles/list.html'"></span>
+            </div>
+        </div>
+    </div>
+</div>

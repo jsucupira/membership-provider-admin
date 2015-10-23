@@ -4,7 +4,7 @@ namespace Membership.Site.Controller
 {
     public class RolesController : System.Web.Mvc.Controller
     {
-        public ActionResult Create()
+        public ActionResult Index()
         {
             return View("Index");
         }

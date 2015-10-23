@@ -10,7 +10,7 @@ namespace Membership.Business.Tests
     [TestClass]
     public class RoleServicesTests : BaseTestClass
     {
-        //public RoleServicesTests() : base(integrationType: IntegrationEnum.MembershipProvider) { }
+       // public RoleServicesTests() : base(integrationType: IntegrationEnum.MembershipProvider) { }
 
         [TestMethod]
         public void test_adding_user_to_role()
@@ -138,11 +138,11 @@ namespace Membership.Business.Tests
             string oldName = "User";
             string newName = "Users";
             RoleServices.CreateRole(oldName);
+            UserServices.AddUser("jsucupira", "jsucupira@test.com", "Nq2gzAQK9w1N");
+            RoleServices.AddUserToRole("jsucupira", oldName);
 
             RoleServices.RenameRole(oldName, newName);
             Assert.IsNotNull(RoleServices.GetRole(newName));
-            UserServices.AddUser("jsucupira", "jsucupira@test.com", "Nq2gzAQK9w1N");
-            RoleServices.AddUserToRole("jsucupira", "Users");
             List<AspUser> expected = new List<AspUser>
             {
                 new AspUser
@@ -152,7 +152,8 @@ namespace Membership.Business.Tests
                     UserName = "jsucupira"
                 }
             };
-            List<AspUser> actual = RoleServices.FindUsersInRole("Users");
+            List<AspUser> actual = RoleServices.FindUsersInRole(newName);
+            Assert.IsTrue(actual.Count == 1);
             actual[0].AspRoles = new List<AspRole>();
             expected[0].Id = actual[0].Id;
             Assert.IsTrue(expected.IsDeepEqual(actual));

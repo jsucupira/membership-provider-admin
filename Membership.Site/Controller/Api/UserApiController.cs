@@ -9,16 +9,16 @@ namespace Membership.Site.Controller.Api
     [RoutePrefix("api/users")]
     public class UserApiController : ApiController
     {
-        [Route("create")]
+        [Route("")]
         [HttpPost]
-        public AspUser Create(UserRequest userRequest)
+        public AspUser Create([FromBody] UserRequest userRequest)
         {
             return UserServices.AddUser(userRequest.UserName, userRequest.Email, userRequest.Password);
         }
 
         [Route("{userName}")]
         [HttpDelete]
-        public void DeleteUser(string userName)
+        public void DeleteUser([FromUri] string userName)
         {
             UserServices.DeleteUser(userName);
         }
@@ -32,14 +32,14 @@ namespace Membership.Site.Controller.Api
 
         [Route("{userName}")]
         [HttpGet]
-        public AspUser GetByName(string userName)
+        public AspUser GetByName([FromUri] string userName)
         {
             return UserServices.GetUser(userName);
         }
 
-        [Route("{userName}/update")]
+        [Route("{userName}")]
         [HttpPut]
-        public void UpdateUser([FromUri]string userName, UserRequest userRequest)
+        public void UpdateUser([FromUri]string userName, [FromBody] UserRequest userRequest)
         {
             UserServices.UpdateUser(userName, userRequest.NewEmail);
         }

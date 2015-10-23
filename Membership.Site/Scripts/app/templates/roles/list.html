@@ -1,1 +1,19 @@
-﻿
+﻿<div class="main-content">
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr class="active">
+                    <th>Name</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="role in roles">
+                    <td><input type="checkbox"></td>
+                    <td>{{role.name}}</td>
+                    <td><a href="javascript:void(0)" ng-click="edit(role.name)">Edit</a></td>
+                    <td><a href="javascript:void(0)" ng-click="deleteRole(role.name)">Delete</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

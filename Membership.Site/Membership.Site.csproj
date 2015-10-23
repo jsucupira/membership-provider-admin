@@ -177,6 +177,7 @@
     <Compile Include="Controller\Api\UserApiController.cs" />
     <Compile Include="Controller\RolesController.cs" />
     <Compile Include="Controller\UsersController.cs" />
+    <Compile Include="Models\RoleRequest.cs" />
     <Compile Include="Models\UserRequest.cs" />
     <Compile Include="Controller\HomeController.cs" />
     <Compile Include="Global.asax.cs">

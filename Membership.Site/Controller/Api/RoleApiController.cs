@@ -3,6 +3,7 @@ using System.Web.Http;
 using Membership.Business;
 using Membership.Model.Roles;
 using Membership.Model.Users;
+using Membership.Site.Models;
 
 namespace Membership.Site.Controller.Api
 {
@@ -11,21 +12,28 @@ namespace Membership.Site.Controller.Api
     {
         [Route("{roleName}/users/{userName}")]
         [HttpPut]
-        public void AddUserToRole(string roleName, string userName)
+        public void AddUserToRole([FromUri] string roleName, [FromUri] string userName)
         {
             RoleServices.AddUserToRole(userName, roleName);
         }
 
-        [Route("{roleName}")]
+        [Route("")]
         [HttpPost]
-        public AspRole Create(string roleName)
+        public AspRole Create([FromBody] RoleRequest roleRequest)
         {
-            return RoleServices.CreateRole(roleName);
+            return RoleServices.CreateRole(roleRequest.Name);
+        }
+
+        [Route("{roleName}")]
+        [HttpPut]
+        public void Update([FromUri] string roleName, [FromBody] RoleRequest roleRequest)
+        {
+            RoleServices.RenameRole(roleName, roleRequest.NewName);
         }
 
         [Route("{roleName}")]
         [HttpDelete]
-        public void DeleteUser(string roleName)
+        public void DeleteUser([FromUri] string roleName)
         {
             RoleServices.DeleteRole(roleName);
         }
@@ -39,28 +47,28 @@ namespace Membership.Site.Controller.Api
 
         [Route("users/{userName}/roles")]
         [HttpDelete]
-        public IEnumerable<AspRole> FindRolesForUser(string userName)
+        public IEnumerable<AspRole> FindRolesForUser([FromUri] string userName)
         {
             return RoleServices.FindRolesForUser(userName);
         }
 
         [Route("{roleName}/users")]
         [HttpDelete]
-        public IEnumerable<AspUser> FindUsersForRole(string roleName)
+        public IEnumerable<AspUser> FindUsersForRole([FromUri] string roleName)
         {
             return RoleServices.FindUsersInRole(roleName);
         }
 
         [Route("{roleName}")]
         [HttpGet]
-        public AspRole GetByName(string roleName)
+        public AspRole GetByName([FromUri] string roleName)
         {
             return RoleServices.GetRole(roleName);
         }
 
         [Route("{roleName}/users/{userName}")]
         [HttpDelete]
-        public void RemoveUserToRole(string roleName, string userName)
+        public void RemoveUserToRole([FromUri] string roleName, [FromUri] string userName)
         {
             RoleServices.RemoveUserFromRole(userName, roleName);
         }

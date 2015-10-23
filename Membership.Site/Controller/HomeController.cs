@@ -7,7 +7,7 @@ namespace Membership.Site.Controller
         // GET: Home
         public ActionResult Index()
         {
-            return Redirect("/users");
+            return Redirect("/roles");
         }
     }
 }

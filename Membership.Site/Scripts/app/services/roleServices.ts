@@ -12,6 +12,7 @@ module Membership {
         removeUserFromRole(userName: string, roleName: string);
         findRolesForUser(userName: string): ng.IPromise<Role[]>;
         findUsersInRole(roleName: string): ng.IPromise<User[]>;
+        updateRole(name, newName);
     }
 
     export class RoleServices implements IRoleServices {
@@ -41,6 +42,7 @@ module Membership {
         createRole(name: string) {
             var deferred = this.async.defer();
             var userRole = new RoleRequest();
+            userRole.name = name;
 
             this.httpService({
                 method: "POST",
@@ -132,6 +134,25 @@ module Membership {
             this.httpService({
                 method: "GET",
                 url: Constants.apiBase + "/roles/" + roleName + "/users"
+            }).success(data => {
+                deferred.resolve(data);
+            }).error(err => {
+                console.log(err);
+                deferred.reject(err);
+            });;
+            return deferred.promise;
+        }
+
+        updateRole(name, newName) {
+            var deferred = this.async.defer();
+            var roleRequest = new RoleRequest();
+            roleRequest.name = name;
+            roleRequest.newName = newName;
+
+            this.httpService({
+                method: "PUT",
+                url: Constants.apiBase() + "/roles/" + name,
+                data: roleRequest
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {

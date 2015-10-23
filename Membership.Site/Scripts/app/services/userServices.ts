@@ -30,7 +30,7 @@ module Membership {
 
             this.httpService({
                 method: "POST",
-                url: Constants.apiBase() + "/users/create",
+                url: Constants.apiBase() + "/users",
                 data: user
             }).success(data => {
                 deferred.resolve(data);
@@ -65,7 +65,7 @@ module Membership {
 
             this.httpService({
                 method: "PUT",
-                url: Constants.apiBase() + "/users/" + user.userName + "/update",
+                url: Constants.apiBase() + "/users/" + user.userName,
                 data: userRequest
             }).success(data => {
                 deferred.resolve(data);

@@ -3,14 +3,16 @@
         <div class="table-responsive">
             <table class="table table-bordered">
                 <tr class="active">
-                    <th></th>
                     <th>User Name</th>
                     <th>Email</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-                <tr ng-repeat="u in users" ng-click="edit(u.userName)" style="cursor: pointer;">
-                    <td><input type="checkbox"></td>
+                <tr ng-repeat="u in users">
                     <td>{{u.userName}}</td>
                     <td>{{u.email}}</td>
+                    <td><a href="javascript:void(0)" ng-click="edit(u.userName)">Edit</a></td>
+                    <td><a href="javascript:void(0)" ng-click="delete(u.userName)">Delete</a></td>
                 </tr>
             </table>
         </div>

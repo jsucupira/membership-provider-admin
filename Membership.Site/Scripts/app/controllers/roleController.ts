@@ -5,7 +5,6 @@
 
         constructor($scope: any, $location: any, roleServices: IRoleServices, $routeParams: any) {
             $scope.role = new Role();
-            $scope.userName = "";
             const locationUrl = $location.path();
 
             $scope.findAll = () => {
@@ -15,27 +14,37 @@
             }
 
             $scope.create = () => {
-                roleServices.createRole($scope.role.roleName).then(data => {
-                    $scope.role = data;
+                roleServices.createRole($scope.role.name).then(() => {
+                    $location.path("/roles");
                 });
             }
 
-            $scope.getByName = () => {
-                roleServices.getByName($scope.role.roleName).then(data => {
+            $scope.getByName = (name) => {
+                roleServices.getByName(name).then(data => {
                     $scope.role = data;
+                    $scope.role.newName = $scope.role.name;
                 });
             }
 
-            $scope.deleteRole = () => {
-                roleServices.deleteRole($scope.role.roleName);
+            $scope.search = () => {
+                roleServices.getByName($scope.role.name).then(data => {
+                    $scope.roles = [];
+                    $scope.roles.push(data);
+                });
+            }
+
+            $scope.deleteRole = (name) => {
+                if (confirm("Are you sure you want delete this role?")) {
+                    roleServices.deleteRole(name).then($scope.findAll);
+                }
             }
 
             $scope.addUserToRole = () => {
-                roleServices.addUserToRole($scope.userName, $scope.role.roleName);
+                roleServices.addUserToRole($scope.userName, $scope.role.name);
             }
 
             $scope.removeUserFromRole = () => {
-                roleServices.removeUserFromRole($scope.userName, $scope.role.roleName);
+                roleServices.removeUserFromRole($scope.userName, $scope.role.name);
             }
 
             $scope.findRolesForUser = () => {
@@ -45,13 +54,21 @@
             }
 
             $scope.findUsersInRole = () => {
-                roleServices.findUsersInRole($scope.role.roleName).then(data => {
+                roleServices.findUsersInRole($scope.role.name).then(data => {
                     $scope.users = data;
                 });
             }
 
             $scope.edit = (name) => {
                 $location.path(`/roles/update/${name}`);
+            }
+
+            $scope.update = () => {
+                if (confirm("Are you sure you want rename the role?")) {
+                    roleServices.updateRole($scope.role.name, $scope.role.newName).then(() => {
+                        $location.path(`/roles`);
+                    });
+                }
             }
 
             if (locationUrl === "/roles/list") {

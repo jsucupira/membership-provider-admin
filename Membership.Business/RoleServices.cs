@@ -32,11 +32,19 @@ namespace Membership.Business
             if (string.IsNullOrEmpty(roleName))
                 throw new MissingValueException("RoleName");
 
-            AspRole result = RoleManagerFactory.Create().CreateRole(roleName);
-            if (result == null)
-                throw new BadOperationException($"Unable to create role '{roleName}'.");
+            try
+            {
+                AspRole result = RoleManagerFactory.Create().CreateRole(roleName);
+                if (result == null)
+                    throw new BadOperationException($"Unable to create role '{roleName}'.");
 
-            return result;
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                //Log error
+                throw new BadOperationException($"Unable to create role '{roleName}'.");
+            }
         }
 
         public static void DeleteRole(string roleName)

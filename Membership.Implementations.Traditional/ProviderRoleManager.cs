@@ -62,8 +62,11 @@ namespace Membership.Implementations.Traditional
         {
             string[] users = Roles.GetUsersInRole(oldName);
             Roles.CreateRole(newName);
-            Roles.AddUsersToRole(users, newName);
-            Roles.RemoveUsersFromRole(users, oldName);
+            if (users.Any())
+            {
+                Roles.AddUsersToRole(users, newName);
+                Roles.RemoveUsersFromRole(users, oldName);
+            }
             Roles.DeleteRole(oldName);
         }
     }

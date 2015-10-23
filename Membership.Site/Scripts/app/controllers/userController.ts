@@ -15,8 +15,8 @@
             }
 
             $scope.create = () => {
-                userServices.createUser($scope.user.userName, $scope.user.email, $scope.password).then(data => {
-                    $scope.user = data;
+                userServices.createUser($scope.user.userName, $scope.user.email, $scope.password).then(() => {
+                    $location.path("/users");
                 });
             }
 
@@ -33,12 +33,16 @@
                 });
             }
 
-            $scope.deleteUser = (userName) => {
-                userServices.deleteUser(userName);
+            $scope.delete = (userName) => {
+                if (confirm("Are you sure you want delete this user?")) {
+                    userServices.deleteUser(userName).then($scope.findAll);
+                }
             }
 
             $scope.updateUser = () => {
-                userServices.updateUser($scope.user, $scope.user.email);
+                userServices.updateUser($scope.user, $scope.user.email).then(() => {
+                    $location.path("/users");
+                });
             }
 
             $scope.edit = (userName) => {
