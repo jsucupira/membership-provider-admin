@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +47,7 @@
     <Compile Include="Exceptions\InvalidValueException.cs" />
     <Compile Include="Exceptions\MissingValueException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
-    <Compile Include="Exceptions\UnauthorizedException.cs" />
+    <Compile Include="Exceptions\WebErrorResponse.cs" />
     <Compile Include="Extensibility\MefBase.cs" />
     <Compile Include="Extensibility\MefExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
