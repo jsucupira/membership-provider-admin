@@ -136,6 +136,7 @@
     <Content Include="gruntfile.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\roleRoute.js" />
+    <Content Include="Scripts\app\templates\users\search.html" />
     <Content Include="Scripts\app\userRoute.js" />
     <Content Include="Scripts\app\templates\roles\edit.html" />
     <Content Include="Scripts\app\templates\roles\create.html" />
@@ -173,6 +174,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controller\Api\RoleApiController.cs" />
     <Compile Include="Controller\Api\UserApiController.cs" />
+    <Compile Include="Controller\RolesController.cs" />
     <Compile Include="Controller\UsersController.cs" />
     <Compile Include="Models\UserRequest.cs" />
     <Compile Include="Controller\HomeController.cs" />
@@ -193,6 +195,7 @@
     <Content Include=".bowerrc" />
     <Content Include="Scripts\vendor\angular\angular.min.js.map" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

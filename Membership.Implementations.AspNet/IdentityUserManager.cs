@@ -27,11 +27,11 @@ namespace Membership.Implementations.AspNet
             }
         }
 
-        public void UpdateUserEmail(string oldEmail, string newEmail)
+        public void UpdateUserEmail(string userName, string newEmail)
         {
             using (ApplicationUserManager manager = ApplicationUserManager.Create())
             {
-                IdentityUser user = manager.FindByEmail(oldEmail);
+                IdentityUser user = manager.FindByName(userName);
                 if (user != null)
                 {
                     user.Email = newEmail;

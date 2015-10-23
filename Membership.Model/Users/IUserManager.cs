@@ -18,9 +18,9 @@ namespace Membership.Model.Users
         /// <summary>
         /// Updates the user.
         /// </summary>
-        /// <param name="oldEmail">The old email.</param>
+        /// <param name="userName">User Name.</param>
         /// <param name="newEmail">The new email.</param>
-        void UpdateUserEmail(string oldEmail, string newEmail);
+        void UpdateUserEmail(string userName, string newEmail);
         /// <summary>
         /// Updates the password.
         /// </summary>

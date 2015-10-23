@@ -5,7 +5,7 @@ using Membership.Model.Users;
 
 namespace Membership.Implementations.Traditional
 {
-    [Export(typeof (IUserManager))]
+    [Export(typeof(IUserManager))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     internal class ProviderUserManager : IUserManager
     {
@@ -14,17 +14,13 @@ namespace Membership.Implementations.Traditional
             return System.Web.Security.Membership.CreateUser(userName, password, email).Map();
         }
 
-        public void UpdateUserEmail(string oldEmail, string newEmail)
+        public void UpdateUserEmail(string userName, string newEmail)
         {
-            string userName = System.Web.Security.Membership.GetUserNameByEmail(oldEmail);
-            if (userName != null)
+            MembershipUser user = System.Web.Security.Membership.GetUser(userName);
+            if (user != null)
             {
-                MembershipUser user = System.Web.Security.Membership.GetUser(userName);
-                if (user != null)
-                {
-                    user.Email = newEmail;
-                    System.Web.Security.Membership.UpdateUser(user);
-                }
+                user.Email = newEmail;
+                System.Web.Security.Membership.UpdateUser(user);
             }
         }
 

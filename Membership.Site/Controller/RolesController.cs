@@ -8,20 +8,5 @@ namespace Membership.Site.Controller
         {
             return View("Index");
         }
-
-        public ActionResult Edit(string id)
-        {
-            return View("Index");
-        }
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult List()
-        {
-            return View("Index");
-        }
     }
 }

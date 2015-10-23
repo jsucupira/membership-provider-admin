@@ -13,6 +13,14 @@ namespace Membership.Site
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapMvcAttributeRoutes();
+
+            routes.MapRoute(
+                name: "Users",
+                url: "users/{relative}/{*id}",
+                defaults: new { controller = "Users", action = "Index", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Direct",
                 url: "{controller}/{action}/{id}",

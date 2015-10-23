@@ -59,21 +59,18 @@ namespace Membership.Business
             return user;
         }
 
-        public static void UpdateUser(string oldEmail, string newEmail)
+        public static void UpdateUser(string userName, string newEmail)
         {
-            if (string.IsNullOrEmpty(oldEmail))
-                throw new MissingValueException("Old Email Address");
+            if (string.IsNullOrEmpty(userName))
+                throw new MissingValueException("User Name");
 
             if (string.IsNullOrEmpty(newEmail))
                 throw new MissingValueException("New Email Address");
 
-            if (!oldEmail.IsValidEmail())
-                throw new InvalidValueException("Old Email Address", oldEmail);
-
             if (!newEmail.IsValidEmail())
                 throw new InvalidValueException("New Email Address", newEmail);
 
-            UserManagerFactory.Create().UpdateUserEmail(oldEmail, newEmail);
+            UserManagerFactory.Create().UpdateUserEmail(userName, newEmail);
         }
 
         public static bool UpdateUserPassword(string userName, string oldPassword, string newPassword)

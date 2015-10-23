@@ -8,11 +8,6 @@
                 title: 'User Page',
                 templateUrl: '/scripts/app/templates/users/index.html',
                 controller: 'userController'
-            }).when('/',
-            {
-                title: 'User Page',
-                templateUrl: '/scripts/app/templates/users/index.html',
-                controller: 'userController'
             })
             .when('/users/create',
             {
@@ -24,6 +19,12 @@
             {
                 title: 'List User',
                 templateUrl: '/scripts/app/templates/users/list.html',
+                controller: 'userController'
+            })
+            .when('/users/search',
+            {
+                title: 'Search User',
+                templateUrl: '/scripts/app/templates/users/search.html',
                 controller: 'userController'
             })
             .when('/users/update/:userName',

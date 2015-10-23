@@ -20,9 +20,9 @@ namespace Membership.Business.Tests.Mock
             return user;
         }
 
-        public void UpdateUserEmail(string oldEmail, string newEmail)
+        public void UpdateUserEmail(string userName, string newEmail)
         {
-            AspUser user = UserDataMock.FindByEmail(oldEmail);
+            AspUser user = UserDataMock.FindByUserName(userName);
             user.Email = newEmail;
             UserDataMock.Update(user);
         }

@@ -41,7 +41,7 @@ namespace Membership.Site.Controller.Api
         [HttpPut]
         public void UpdateUser([FromUri]string userName, UserRequest userRequest)
         {
-            UserServices.UpdateUser(userRequest.Email, userRequest.NewEmail);
+            UserServices.UpdateUser(userName, userRequest.NewEmail);
         }
     }
 }

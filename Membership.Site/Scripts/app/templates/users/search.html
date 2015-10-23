@@ -1,0 +1,18 @@
+﻿<div class="main-content">
+    <div class="container">
+        <form class="form-horizontal" role="form">
+
+            <div class="form-group">
+                <label for="name" class="col-md-2 control-label">User Name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" placeholder="User name" ng-model="user.userName" ng-required="true">
+                </div>
+            </div>
+
+            <button ng-click="search()">Search by User Name</button>
+        </form>
+        <div>
+            <span ng-include="'/scripts/app/templates/users/list.html'"></span>
+        </div>
+    </div>
+</div>
