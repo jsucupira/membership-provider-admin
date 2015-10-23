@@ -123,7 +123,7 @@ namespace Membership.Business.Tests
             AspUser expected = new AspUser { Email = "jsucupira@updated.com", UserName = "jsucupira", Id = "2" };
             UserServices.AddUser(expected.UserName, "jsucupira@test.com", "Nq2gzAQK9w1N");
             Assert.IsTrue(UserServices.FindAll().Count == 2);
-            UserServices.UpdateUser("jsucupira@test.com", expected.Email);
+            UserServices.UpdateUser("jsucupira", expected.Email);
             Assert.IsTrue(UserServices.FindAll().Count == 2);
             AspUser actual = UserServices.GetUser(expected.UserName);
             expected.Id = actual.Id;
