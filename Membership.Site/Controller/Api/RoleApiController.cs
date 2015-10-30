@@ -46,14 +46,14 @@ namespace Membership.Site.Controller.Api
         }
 
         [Route("users/{userName}/roles")]
-        [HttpDelete]
+        [HttpGet]
         public IEnumerable<AspRole> FindRolesForUser([FromUri] string userName)
         {
             return RoleServices.FindRolesForUser(userName);
         }
 
         [Route("{roleName}/users")]
-        [HttpDelete]
+        [HttpGet]
         public IEnumerable<AspUser> FindUsersForRole([FromUri] string roleName)
         {
             return RoleServices.FindUsersInRole(roleName);

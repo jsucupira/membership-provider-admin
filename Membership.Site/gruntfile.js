@@ -8,7 +8,7 @@ module.exports = function (grunt) {
             options: {
                 force: true
             },
-            output: ["./scripts/app/_output", "./scripts/app/_vendor"]
+            output: ["lib"]
         },
         typescript: {
             options: {
@@ -16,26 +16,51 @@ module.exports = function (grunt) {
             },
             custom: {
                 src: ['./scripts/app/*/*.ts'],
-                dest: './scripts/_output'
+                dest: './lib/app'
             }
         },
         concat: {
             custom: {
-                src: ['./scripts/_output/*/*.js'],
-                dest: './scripts/_output/combined.js'
+                src: ['./lib/app/*/*.js'],
+                dest: './scripts/app/combined.js'
             },
             vendor: {
-                src: ['./scripts/vendor/angular/*.js', './scripts/vendor/angular-route/*.js'],
-                dest: './scripts/_vendor/combined.js'
+                src: ['lib/angular/*.js', 'lib/angular-route/*.js'],
+                dest: 'lib/angular/combined.js'
             }
         },
-
-
+        bower: {
+            install: {
+                options: {
+                    cleanTargetDir: false,
+                    cleanBowerDir: false,
+                    install: true,
+                    copy: true,
+                    layout: "byComponent"
+                }
+            }
+        },
+        less: {
+            production: {
+                options: {
+                    cleancss: true,
+                    compress: false,
+                    relativeUrls: true
+                },
+                files: {
+                    'lib/bootstrap/bootstrap.css': 'lib/temp/bootstrap/less/bootstrap.less'
+                }
+            }
+        },
     });
 
+    grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-typescript");
+    grunt.loadNpmTasks('grunt-bower-task');
+    //grunt.loadNpmTasks('grunt-bower');
 
-    grunt.registerTask("default", ["typescript"]);
+    grunt.registerTask("default", ["bower:install", "typescript", "less:production"]);
+    grunt.loadNpmTasks("grunt-bower-task");
 };

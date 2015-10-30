@@ -105,7 +105,7 @@ module Membership {
 
             this.httpService({
                 method: "DELETE",
-                url: Constants.apiBase() + "/roles/" + roleName + "/users" + userName
+                url: Constants.apiBase() + "/roles/" + roleName + "/users/" + userName
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {
@@ -119,7 +119,7 @@ module Membership {
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",
-                url: Constants.apiBase + "/roles/users/" + userName + "/roles"
+                url: Constants.apiBase() + "/roles/users/" + userName + "/roles"
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {
@@ -133,7 +133,7 @@ module Membership {
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",
-                url: Constants.apiBase + "/roles/" + roleName + "/users"
+                url: Constants.apiBase() + "/roles/" + roleName + "/users"
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {

@@ -5,6 +5,7 @@
 
         constructor($scope: any, $location: any, roleServices: IRoleServices, $routeParams: any) {
             $scope.role = new Role();
+            $scope.userName = "";
             const locationUrl = $location.path();
 
             $scope.findAll = () => {
@@ -23,6 +24,7 @@
                 roleServices.getByName(name).then(data => {
                     $scope.role = data;
                     $scope.role.newName = $scope.role.name;
+                    $scope.findUsersInRole();
                 });
             }
 
@@ -40,11 +42,15 @@
             }
 
             $scope.addUserToRole = () => {
-                roleServices.addUserToRole($scope.userName, $scope.role.name);
+                roleServices.addUserToRole($scope.userName, $scope.role.name).then(() => {
+                    $scope.findUsersInRole();
+                });
             }
 
-            $scope.removeUserFromRole = () => {
-                roleServices.removeUserFromRole($scope.userName, $scope.role.name);
+            $scope.removeUserFromRole = (name) => {
+                roleServices.removeUserFromRole(name, $scope.role.name).then(() => {
+                    $scope.findUsersInRole();
+                });
             }
 
             $scope.findRolesForUser = () => {
@@ -55,7 +61,7 @@
 
             $scope.findUsersInRole = () => {
                 roleServices.findUsersInRole($scope.role.name).then(data => {
-                    $scope.users = data;
+                    $scope.role.users = data;
                 });
             }
 

@@ -4,11 +4,36 @@
             <div class="form-group">
                 <label for="name" class="col-md-2 control-label">New Name</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" placeholder="Name" ng-model="role.newName" ng-required="true">
+                    <input id="name" type="text" class="form-control" placeholder="Name" ng-model="role.newName" ng-required="true">
                 </div>
             </div>
-            
+
             <button ng-click="update()">Update Role Name</button>
         </form>
+
+        <h1>
+            Manage users
+        </h1>
+        <form class="form-horizontal" role="form" name="addUser">
+            <div class="form-group">
+                <label for="username" class="col-md-2 control-label">Add user to role:</label>
+                <div class="col-md-10">
+                    <input id="username" type="text" class="form-control" placeholder="User Name" ng-model="userName" ng-required="true">
+                </div>
+            </div>
+            <button ng-click="addUserToRole()">Update Role Name</button>
+        </form>
+        <table>
+            <tr>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="user in role.users">
+                <td>{{user.userName}}</td>
+                <td>{{user.email}}</td>
+                <td><a href="javascript:void(0);" ng-click="removeUserFromRole(user.userName)">remove user</a></td>
+            </tr>
+        </table>
     </div>
 </div>

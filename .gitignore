@@ -203,6 +203,7 @@ FakesAssemblies/
 #grunt builds
 /Membership.Site/Scripts/_output/
 /Membership.Site/Scripts/_vendor/
+/Membership.Site/lib/
 
 #typescript output
 /Membership.Site/Scripts/app/*/*.js*
