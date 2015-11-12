@@ -1,17 +1,14 @@
 ﻿<div class="main-content">
     <div class="container">
-        <form class="form-horizontal" role="form">
+        <form class="form-inline" role="form">
 
             <div class="form-group">
-                <label for="name" class="col-md-2 control-label">Role Name</label>
-                <div class="col-md-10">
+                <label for="name">Role Name </label>
                     <input type="text" class="form-control" placeholder="Role name" ng-model="role.name" ng-required="true">
-                </div>
+                    <button class="btn btn-default" ng-click="search()">Search by Role Name</button>
             </div>
-
-            <button ng-click="search()">Search by Role Name</button>
         </form>
-        <div>
+        <div class="col-md-10" style="padding: 20px">
             <span ng-include="'/scripts/app/templates/roles/list.html'"></span>
         </div>
     </div>

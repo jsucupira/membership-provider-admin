@@ -147,12 +147,6 @@
     <Content Include="Scripts\app\templates\users\edit.html" />
     <Content Include="Scripts\app\templates\users\index.html" />
     <Content Include="Scripts\app\templates\users\list.html" />
-    <Content Include="Scripts\vendor\angular-route\angular-route.js" />
-    <Content Include="Scripts\vendor\angular-route\angular-route.min.js" />
-    <Content Include="Scripts\vendor\angular\angular.js" />
-    <Content Include="Scripts\vendor\angular\angular.min.js" />
-    <Content Include="Scripts\_output\combined.js" />
-    <Content Include="Scripts\_vendor\combined.js" />
     <Content Include="Web.config" />
     <TypeScriptCompile Include="Scripts\app\models\roleRequest.ts" />
     <TypeScriptCompile Include="Scripts\app\models\userRequest.ts" />
@@ -167,6 +161,7 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -184,6 +179,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserRoleRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,7 +192,6 @@
     <Content Include="packages.config" />
     <Content Include="bower.json" />
     <Content Include=".bowerrc" />
-    <Content Include="Scripts\vendor\angular\angular.min.js.map" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <None Include="Web.Debug.config">
@@ -253,7 +248,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58212</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58133/</IISUrl>
+          <IISUrl>http://localhost:56134/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

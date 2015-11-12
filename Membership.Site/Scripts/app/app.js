@@ -7,13 +7,20 @@
     var app = angular.module('Membership.Site', ['ngRoute']);
     app.config(['$routeProvider',
         function ($routeProvider) {
-            $routeProvider.otherwise({ redirectTo: '/' });
+            $routeProvider.when("/", {
+                title: "Membership Provider Admin",
+                template: "<h1>Welcome</h1><p>Click in one of the navigation links above</p>"
+            }).otherwise({ redirectTo: '/' });
         }
     ]
 );
 
     app.config(['$httpProvider', '$locationProvider', function ($httpProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
+        //$locationProvider.html5Mode(true);
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
     }]);
 
 

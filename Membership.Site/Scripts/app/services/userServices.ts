@@ -23,7 +23,7 @@ module Membership {
 
         createUser(userName: string, email: string, password: string) {
             var deferred = this.async.defer();
-            var user = new UserRequest();
+            const user = new UserRequest();
             user.userName = userName;
             user.email = email;
             user.password = password;
@@ -65,7 +65,7 @@ module Membership {
 
             this.httpService({
                 method: "PUT",
-                url: Constants.apiBase() + "/users/" + user.userName,
+                url: Constants.apiBase() + "/users?userName=" + user.userName,
                 data: userRequest
             }).success(data => {
                 deferred.resolve(data);
@@ -80,7 +80,7 @@ module Membership {
             var deferred = this.async.defer();
             this.httpService({
                 method: "GET",
-                url: Constants.apiBase() + "/users/" + userName
+                url: Constants.apiBase() + "/users?userName=" + userName
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {
@@ -94,7 +94,7 @@ module Membership {
             var deferred = this.async.defer();
             this.httpService({
                 method: "DELETE",
-                url: Constants.apiBase() + "/users/" + userName
+                url: Constants.apiBase() + "/users?userName=" + userName
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {

@@ -1,15 +1,12 @@
 ﻿<div class="main-content">
     <div class="container">
-        <form class="form-horizontal" role="form" name="createForm">
+        <form class="form-inline" role="form" name="createForm">
 
             <div class="form-group">
-                <label for="name" class="col-md-2 control-label">Role Name</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" placeholder="Role name" ng-model="role.name" ng-required="true">
-                </div>
+                <label for="name">Role Name</label>
+                <input type="text" class="form-control" placeholder="Role name" ng-model="role.name" ng-required="true">
             </div>
-
-            <button ng-click="create()">Create Role</button>
+            <button class="btn btn-default" ng-click="create()">Create Role</button>
         </form>
     </div>
 </div>

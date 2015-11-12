@@ -1,17 +1,15 @@
 ﻿<div class="main-content">
     <div class="container">
-        <form class="form-horizontal" role="form">
+        <form class="form-inline" role="form">
 
             <div class="form-group">
-                <label for="name" class="col-md-2 control-label">User Name</label>
-                <div class="col-md-10">
+                <label for="name">User Name</label>
                     <input type="text" class="form-control" placeholder="User name" ng-model="user.userName" ng-required="true">
-                </div>
             </div>
 
-            <button ng-click="search()">Search by User Name</button>
+            <button class="btn btn-default" ng-click="search()">Search by User Name</button>
         </form>
-        <div>
+        <div style="padding: 20px;">
             <span ng-include="'/scripts/app/templates/users/list.html'"></span>
         </div>
     </div>

@@ -16,7 +16,7 @@ namespace Membership.Site.Controller.Api
             return UserServices.AddUser(userRequest.UserName, userRequest.Email, userRequest.Password);
         }
 
-        [Route("{userName}")]
+        [Route("")]
         [HttpDelete]
         public void DeleteUser([FromUri] string userName)
         {
@@ -30,14 +30,14 @@ namespace Membership.Site.Controller.Api
             return UserServices.FindAll();
         }
 
-        [Route("{userName}")]
+        [Route("")]
         [HttpGet]
         public AspUser GetByName([FromUri] string userName)
         {
             return UserServices.GetUser(userName);
         }
 
-        [Route("{userName}")]
+        [Route("")]
         [HttpPut]
         public void UpdateUser([FromUri]string userName, [FromBody] UserRequest userRequest)
         {

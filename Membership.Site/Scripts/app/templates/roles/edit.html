@@ -1,32 +1,27 @@
 ﻿<div class="main-content">
     <div class="container">
-        <form class="form-horizontal" role="form" name="createForm">
+        <form class="form-inline" role="form" name="createForm">
             <div class="form-group">
-                <label for="name" class="col-md-2 control-label">New Name</label>
-                <div class="col-md-10">
-                    <input id="name" type="text" class="form-control" placeholder="Name" ng-model="role.newName" ng-required="true">
-                </div>
+                <label for="name">New Name</label>
+                <input id="name" type="text" class="form-control" placeholder="Name" ng-model="role.newName" ng-required="true">
             </div>
-
-            <button ng-click="update()">Update Role Name</button>
+            <button class="btn btn-default" ng-click="update()">Update Role Name</button>
         </form>
 
         <h1>
             Manage users
         </h1>
-        <form class="form-horizontal" role="form" name="addUser">
+        <form class="form-inline" role="form" name="addUser">
             <div class="form-group">
-                <label for="username" class="col-md-2 control-label">Add user to role:</label>
-                <div class="col-md-10">
-                    <input id="username" type="text" class="form-control" placeholder="User Name" ng-model="userName" ng-required="true">
-                </div>
+                <label for="username">Add user to role:</label>
+                <input id="username" type="text" class="form-control" placeholder="User Name" ng-model="userName" ng-required="true">
             </div>
-            <button ng-click="addUserToRole()">Update Role Name</button>
+            <button class="btn btn-default" ng-click="addUserToRole()">Add User to Role</button>
         </form>
-        <table>
+        <table class="table table-bordered" style="margin-top: 20px;">
             <tr>
                 <th>User Name</th>
-                <th>User Email</th>
+                <th>Email</th>
                 <th></th>
             </tr>
             <tr ng-repeat="user in role.users">

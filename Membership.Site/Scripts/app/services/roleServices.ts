@@ -26,10 +26,13 @@ module Membership {
 
         addUserToRole(userName: string, roleName: string) {
             var deferred = this.async.defer();
-
+            const userRoleRequest = new UserRoleRequest();
+            userRoleRequest.roleName = roleName;
+            userRoleRequest.userName = userName;
             this.httpService({
                 method: "PUT",
-                url: Constants.apiBase() + "/roles/" + roleName + "/users/" + userName
+                url: Constants.apiBase() + "/roles/" + roleName + "/users",
+                data: userRoleRequest
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {
@@ -105,7 +108,7 @@ module Membership {
 
             this.httpService({
                 method: "DELETE",
-                url: Constants.apiBase() + "/roles/" + roleName + "/users/" + userName
+                url: Constants.apiBase() + "/roles/" + roleName + "/users?userName=" + userName
             }).success(data => {
                 deferred.resolve(data);
             }).error(err => {

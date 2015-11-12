@@ -10,11 +10,11 @@ namespace Membership.Site.Controller.Api
     [RoutePrefix("api/roles")]
     public class RoleApiController : ApiController
     {
-        [Route("{roleName}/users/{userName}")]
+        [Route("{roleName}/users")]
         [HttpPut]
-        public void AddUserToRole([FromUri] string roleName, [FromUri] string userName)
+        public void AddUserToRole([FromUri] string roleName, [FromBody] UserRoleRequest userRoleRequest)
         {
-            RoleServices.AddUserToRole(userName, roleName);
+            RoleServices.AddUserToRole(userRoleRequest.UserName, roleName);
         }
 
         [Route("")]
@@ -66,7 +66,7 @@ namespace Membership.Site.Controller.Api
             return RoleServices.GetRole(roleName);
         }
 
-        [Route("{roleName}/users/{userName}")]
+        [Route("{roleName}/users")]
         [HttpDelete]
         public void RemoveUserToRole([FromUri] string roleName, [FromUri] string userName)
         {
