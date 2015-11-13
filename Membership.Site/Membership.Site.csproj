@@ -161,7 +161,6 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -203,6 +202,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\typings\custom\" />
+    <Folder Include="Scripts\typings\toastr\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\models\user.ts" />

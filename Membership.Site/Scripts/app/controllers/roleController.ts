@@ -1,6 +1,5 @@
-﻿/// <reference path="../../typings/toastr/toastr.d.ts" />
-module Membership {
-
+﻿module Membership {
+    declare var toastr;
     export class RoleController {
         static $inject = ['$scope', '$location', 'roleServices', '$routeParams'];
 
